@@ -3,7 +3,7 @@ import { Card, Button } from 'react-bootstrap';
 import { Contador } from './Contador';
 
 
-const Item = ({name,desc,price,img,id,stock}) => {
+const ItemDetail = ({name,desc,price,img,id,stock}) => {
     
 
     return ( 
@@ -15,6 +15,9 @@ const Item = ({name,desc,price,img,id,stock}) => {
             <Card.Img variant="top" src={img} />
             <Card.Body>
               <Card.Title>{name}</Card.Title>
+              <Card.Text>
+                {desc}
+              </Card.Text>
               <Contador stock={stock}/>
               </Card.Body>
           </Card>  
@@ -23,4 +26,4 @@ const Item = ({name,desc,price,img,id,stock}) => {
     );
 }
 
-export default Item;
+export default ItemDetail;

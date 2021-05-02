@@ -4,7 +4,7 @@ import ItemListContainer from './components/container/ItemListContainer';
 import NavBar from './components/NavBar/NavBar';
 import { BrowserRouter, Switch, Route} from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
-import BotonPrueba from './components/Button/BotonPrueba';
+
 
 
 
