@@ -1,34 +1,30 @@
-import React, { Component } from 'react';
+
 import CartWidget from './CartWidget';
-import { Navbar, Nav, Form, FormControl, Button, NavDropdown } from 'react-bootstrap';
-import { Cart, CartFill } from 'react-bootstrap-icons';
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
+import React from 'react'
 
-
-export default class NavBar extends React.Component {
-
-    render() {
-
-        return (
-            
-        
+export default function NavBar() {
+    return (
+        <div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                    <Navbar.Brand href="#home">
-                    <img
-                        alt="Consola retro logo"
+                    <Navbar.Brand href="/" exact >
+                    <Link to="/" exact><img alt="Consola retro logo" 
+                        
                         src="https://image.flaticon.com/icons/png/128/2727/2727202.png"
                         width="30"
                         height="30"
-                        className="d-inline-block align-top"
-                        />{' '}
+                        className="d-inline-block align-top"/>
+                        </Link>
                     RetroGames
                     </Navbar.Brand>
                     <CartWidget />
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className="mr-auto">
-                        <Nav.Link href="#features">Historia</Nav.Link>
-                        <Nav.Link href="#pricing">Acerca de nosotros</Nav.Link>
+                        <Nav className="detalle productos">
+                        <Nav.Link href="/Historia">Historia</Nav.Link>
+                        <Nav.Link href="/Nosotros">Acerca de nosotros</Nav.Link>
                         <NavDropdown title="Productos" id="collasible-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Consolas</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">Bartop</NavDropdown.Item>
@@ -44,6 +40,9 @@ export default class NavBar extends React.Component {
                     </Nav>
                 </Navbar.Collapse>           
             </Navbar>
-        );
-    }
+ 
+        </div>
+    )
 }
+
+
