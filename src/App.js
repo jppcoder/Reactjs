@@ -7,7 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Historia from './components/container/Historia';
 import Nosotros from './components/container/Nosotros';
 import Carrito from './components/container/Carrito';
-import ItemDetail from './components/container/ItemDetail';
+
 
 function App() {
   return ( 
@@ -16,9 +16,6 @@ function App() {
       <BrowserRouter> 
         <NavBar />         
           <Switch>
-            <Route path='/id'>
-              <ItemDetail />
-            </Route>
             <Route path='/Historia' exact>
               <Historia />
             </Route>

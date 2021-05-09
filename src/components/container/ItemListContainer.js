@@ -5,6 +5,11 @@ function ItemListContainer() {
 
 	const [products, setProducts] = useState([])
 
+	const handlerClick = () => {
+		console.log("hola")
+	  }
+
+
 	useEffect(() => {
 		fetch("json/prod.json")
 		.then(response => response.json())
@@ -17,7 +22,14 @@ function ItemListContainer() {
 	
 
     return ( 
-      <ItemList products={products} />
+      <>
+		<ItemList array={products} handleClick={handlerClick}/>
+	  </>
+	  
+	  
+	  
+
+
     );
 
     

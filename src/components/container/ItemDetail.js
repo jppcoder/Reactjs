@@ -1,29 +1,32 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 import { useParams } from 'react-router';
 import { Contador } from './Contador';
 
 
-const ItemDetail = ({name,desc,price,img,id,stock}) => {
-    
-  useParams();
-  console.log(useParams);
+const ItemDetail = ({handleClick, productos}) => {
+
+  const {id} = useParams();
+  
+  const found = productos.find(element => element.id === id);
+  console.log(found)
 
     return ( 
       <> 
         
-        <div className="col Prueba"
-          key={id}>
-          <Card style={{ width: '100%' ,height: '600px'}}>
-            <Card.Img variant="top" src={img} style={{ width: '200px' }} />
+        <div className="container">
+        <Card>
+            <Card.Img variant="left" src={found.img} />
             <Card.Body>
-              <Card.Title>{name}</Card.Title>
-              <Card.Text>
-                {desc}
-              </Card.Text>
-              <Card.Text>${price}</Card.Text>
-              <Contador stock={stock}/>
+              <Card.Title>{found.name}</Card.Title>
+              <Card.Text>${found.price},00</Card.Text>
+              <Card.Text>${found.desc}</Card.Text>
+              <Contador stock={found.stock}/>
               </Card.Body>
+              
+              <Card.Footer>
+              <Button onClick={handleClick}>Prueba</Button>
+                </Card.Footer>
           </Card>  
         </div>  
       </> 
