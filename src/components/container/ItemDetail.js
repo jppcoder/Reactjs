@@ -16,16 +16,15 @@ const ItemDetail = ({handleClick, productos}) => {
         
         <div className="container">
         <Card>
-            <Card.Img variant="left" src={found.img} />
+            <Card.Img variant="left" src={found.img} style={{ maxWidth:'400px' }} />
             <Card.Body>
               <Card.Title>{found.name}</Card.Title>
               <Card.Text>${found.price},00</Card.Text>
               <Card.Text>${found.desc}</Card.Text>
               <Contador stock={found.stock}/>
-              </Card.Body>
-              
+              </Card.Body>             
               <Card.Footer>
-              <Button onClick={handleClick}>Prueba</Button>
+              <Button onClick={handleClick}>test boton</Button>
                 </Card.Footer>
           </Card>  
         </div>  

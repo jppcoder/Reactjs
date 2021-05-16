@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 
 
-
-export const Contador = ({stock}) => {
+export const Contador = ({stock, agregar, id}) => {
   
   const [value, setValue] = useState(0);
   const [itemStock, setItemStock] = useState(stock);
   
-
   function show () {
     alert(`Agregaste ${value} al carrito`);
     setItemStock(itemStock - value);
@@ -40,7 +38,7 @@ export const Contador = ({stock}) => {
          <button onClick={remove} className="btn btn-danger">
         Quitar
         </button>
-        <button className="btn btn-warning" onClick={show}>
+        <button className="btn btn-warning" onClick={() => agregar([{id: id, cantidad: value}])}>
         {" "}
         Enviar al carrito{" "}
         </button>

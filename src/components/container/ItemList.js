@@ -20,7 +20,7 @@ const ItemList = ({handleClick, array}) => {
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 mt-5 mb-5">
                         {array.map((item, index) =>
                         <div key={item.name}> 
-                        <Item  name={item.name} price={item.price} img={item.img} stock={item.stock} id={item.id} handleClick={handleClick} />       
+                        <Item  name={item.name} price={item.price} img={item.img} stock={item.stock} id={parseInt(item.id)} handleClick={handleClick} />       
                         </div>
                         )}
                 </div>
