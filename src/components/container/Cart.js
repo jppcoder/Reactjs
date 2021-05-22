@@ -1,6 +1,8 @@
 import React, {useContext, useEffect} from 'react'
 import { useState } from 'react'
 import { CartContext }  from '../../context/CartContext'
+import Table from 'react-bootstrap/Table'
+
 
 
 export default function Cart() {
@@ -15,39 +17,31 @@ export default function Cart() {
     
     return (
         <>
-
         <div>carrito</div>
-        <table className="stripped">
-        <thead>
-          <tr>
-            <th>id</th>
-            <th>cantidad</th>
-            <th>nombre</th>
-            <th>precio</th>
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>imagen</th>
+                <th>id</th>
+                <th>cantidad</th>
+                <th>nombre</th>
+                <th>precio</th>
 
-          </tr>
-        </thead>
-        <tbody>
-          
-          
-          {cart.map((cart) =>
-                        <tr key={cart.id}> 
-                        <td>{cart.id}</td> 
-                         <td>{cart.cantidad}</td>    
-                         <td>{cart.name}</td>
-                         <td>{cart.price}</td>    
-                        </tr>
-        )
-        }
-            
-            
-          
-      
-  </tbody>
-  </table>
-
-
-        
-        </>
+              </tr>
+            </thead>
+            <tbody>
+              {cart.map((cart) =>
+                            <tr key={cart.id} style={{ backgroundColor:'white' }}>
+                              <td><img src={cart.img} style={{ maxWidth:'50px' },{ maxHeight:'50px' }}/></td> 
+                              <td>{cart.id}</td> 
+                              <td>{cart.cantidad}</td>    
+                              <td>{cart.name}</td>
+                              <td>{cart.price}</td>    
+                            </tr>
+              )
+              }     
+            </tbody>
+          </Table>
+    </>
     )
 }
