@@ -2,18 +2,18 @@ import React, { useState, useContext, useEffect } from 'react'
 import { CartContext }  from '../../context/CartContext'
 
 
-export const Contador = ({stock, agregar, id, name, price, img}) => {
+
+export const Contador = ({stock, id, name, price, img}) => {
   
   const [value, setValue] = useState(0);
-  //const [itemStock, setItemStock] = useState(stock);
   const [idProd, setIdProd] = useContext(CartContext)
-  const [itemStock, setItemStock] = useContext(CartContext)
+  const [tempStock, setTempStock] = useState(stock)
 
+ 
 
   function show () {
     alert(`Agregaste ${value} al carrito`);
-    setItemStock(itemStock - value);
-    
+      
   }
   
   function show2 () {
@@ -22,34 +22,39 @@ export const Contador = ({stock, agregar, id, name, price, img}) => {
 
   const add = () => {
     
-    stock > 0 ? (value < stock ? setValue(value + 1)  :  show2()) 
-    : setValue(value);
-    
+
+    if (tempStock > 0) {
+    setValue(value + 1);
+    setTempStock(tempStock - 1);
+    }
+    else {show2()
+    }  
   };
 
   const remove = () => {
-     value > 0 ? setValue(value - 1) : setValue(value);
-  };
+     //value > 0 ? setValue(value - 1) : setValue(value);
+     if (value > 0) {
+      setValue(value - 1);
+      setTempStock(tempStock + 1);}
 
+  };
 
   const addCart = (x, cantidad) => {
   // si existe el id en el array, uso un ternario para agregar mas stock al id existente
   idProd.some(i => i.id == id ) ? 
   // localizo el id si es que existe en el array
     idProd.find(i => ( i.id == id ) && ( i.cantidad += value) ) && setIdProd ([...idProd])
-    : 
     
+    : 
   //en caso que no exista previamente, se agrega al array el id de producto y la cantidad
   setIdProd([...idProd, ...x])  
   
-  
-
   }
-
+  
 
   return (
     <>  
-        <p>Stock: {stock}</p>
+        <p>Stock: {tempStock}</p>
         <p>Cantidad {value}</p>
         <button className="btn btn-primary plusCircle" onClick={add}>
         Agregar
@@ -61,6 +66,7 @@ export const Contador = ({stock, agregar, id, name, price, img}) => {
         {" "}
         Enviar al carrito{" "}
         </button>
+        
     </>
     );
 };
