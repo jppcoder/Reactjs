@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from 'react'
+import { CartContext }  from '../../context/CartContext'
 
 
 export const Contador = ({stock, agregar, id}) => {
   
   const [value, setValue] = useState(0);
-  const [itemStock, setItemStock] = useState(stock);
+  //const [itemStock, setItemStock] = useState(stock);
+  const [idProd, setIdProd] = useContext(CartContext)
+  const [itemStock, setItemStock] = useContext(CartContext)
   
+  
+
   function show () {
     alert(`Agregaste ${value} al carrito`);
     setItemStock(itemStock - value);
@@ -17,10 +22,13 @@ export const Contador = ({stock, agregar, id}) => {
   }
 
   const add = () => {
-    itemStock > 0 ? (value < itemStock ? setValue(value + 1) :  show2()) 
+    
+    
+    stock > 0 ? (value < stock ? setValue(value + 1)  :  show2()) 
     
     
     : setValue(value);
+    
     
   };
 
@@ -28,9 +36,25 @@ export const Contador = ({stock, agregar, id}) => {
      value > 0 ? setValue(value - 1) : setValue(value);
   };
 
+
+  const addCart = (x, cantidad) => {
+  // si existe el id en el array, uso un ternario para agregar mas stock al id existente
+  idProd.some(i => i.id === id ) ? 
+  // localizo el id si es que existe en el array
+    idProd.find(i => ( i.id === id ) && ( i.cantidad += value) ) && setIdProd ([...idProd])
+    : 
+    
+  //en caso que no exista previamente, se agrega al array el id de producto y la cantidad
+  setIdProd([...idProd, ...x])  
+  
+  
+
+  }
+
+
   return (
     <>  
-        <p>Stock: {itemStock}</p>
+        <p>Stock: {stock}</p>
         <p>Cantidad {value}</p>
         <button className="btn btn-primary plusCircle" onClick={add}>
         Agregar
@@ -38,7 +62,7 @@ export const Contador = ({stock, agregar, id}) => {
          <button onClick={remove} className="btn btn-danger">
         Quitar
         </button>
-        <button className="btn btn-warning" onClick={() => agregar([{id: id, cantidad: value}])}>
+        <button className="btn btn-warning" onClick={() => addCart([{id: id, cantidad: value}])}>
         {" "}
         Enviar al carrito{" "}
         </button>
