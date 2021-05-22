@@ -11,8 +11,11 @@ import Nosotros from './components/container/Nosotros';
 import Carrito from './components/container/Cart';
 import Cart from './components/container/Cart';
 
+
 //context
 import { CartProd } from './context/CartContext.js';
+import { DataProd } from './context/DataContext.js';
+
 
 
 function App() {
@@ -29,22 +32,23 @@ function App() {
             <Route path='/Nosotros' exact>
               <Nosotros />
             </Route>
-         
-            <CartProd> 
-              <Route path='/carrito'>
-                <Carrito />
-              </Route>
               
-              <Route path='/' exact>
-                <ItemListContainer />
-              </Route>
-              
-              <Route path='/cart' exact>
-                <Cart />
-              </Route>
-        
-            </CartProd>
-
+                <CartProd> 
+                  <DataProd>
+                    <Route path='/carrito'>
+                      <Carrito />
+                    </Route>
+                    
+                    <Route path='/' exact>
+                      <ItemListContainer />
+                      </Route>
+                    
+                    <Route path='/cart' exact>
+                      <Cart />
+                    </Route>
+                  </DataProd>
+                </CartProd>
+                
           </Switch>
       </BrowserRouter>
       </header>

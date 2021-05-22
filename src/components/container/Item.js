@@ -4,7 +4,7 @@ import { Contador } from './Contador';
 import { Link } from 'react-router-dom';
 import { CartContext, CartProd }  from '../../context/CartContext'
 
-const Item = ({name,price,img,id,stock}) => {
+const Item = ({name,price,img,id,stock, key}) => {
     
   const [idProd, setIdProd, addCart] = useContext(CartContext)
 
@@ -14,16 +14,17 @@ const Item = ({name,price,img,id,stock}) => {
       <> 
         
         <div className="col"
-          key={id}>
+          key={key}>
           <Card style={{ width: '18rem', height:'40rem' }}>
             <Card.Img variant="top" src={img} style={{ maxHeight:'15rem' }} />
             <Card.Body>
+              <Card.Text>{id}</Card.Text>
               <Card.Title>{name}</Card.Title>
               <Card.Text>${price},00</Card.Text>
-              <Contador id={id} stock={stock} agregar={addCart}/>
+              <Contador id={id} key={key} stock={stock} agregar={addCart}/>
               </Card.Body>
               
-              <Button onClick={ ()=> addCart([...idProd, id])  }>Agregar al carrito</Button>
+              {/* <Button onClick={ ()=> addCart([...idProd, id])  }>Agregar al carrito</Button> */}
               <Card.Footer>
                 <Link to={`/items/${id}`}>Mas Informacion</Link>
                 </Card.Footer>
