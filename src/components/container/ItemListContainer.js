@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import ItemList from './ItemList';
 import {CartContext}  from '../../context/CartContext'
 import {DataContext}  from '../../context/DataContext'
+import Cart from './Cart';
 
 function ItemListContainer() {
 
@@ -28,9 +29,9 @@ function ItemListContainer() {
 
     return ( 
       <>
-	  	<button onClick={handlerClick}>texto</button>
-	  	<div></div>
+		<Cart/>
 		<ItemList  array={consolas} handleClick={handlerClick}/>
+		
 	  </>
 	  
 	  

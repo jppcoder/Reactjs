@@ -21,7 +21,7 @@ const Item = ({name,price,img,id,stock, key}) => {
               <Card.Text>{id}</Card.Text>
               <Card.Title>{name}</Card.Title>
               <Card.Text>${price},00</Card.Text>
-              <Contador id={id} key={key} stock={stock} agregar={addCart}/>
+              <Contador id={id} key={key} stock={stock} agregar={addCart} name={name} img={img} price={price}/>
               </Card.Body>
               
               {/* <Button onClick={ ()=> addCart([...idProd, id])  }>Agregar al carrito</Button> */}

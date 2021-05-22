@@ -3,9 +3,10 @@ import { Cart } from 'react-bootstrap-icons';
 
 const CartWidget = () => {
     return (  
-       <Cart size={25} color="white"></Cart>
-        
-
+      <>
+        <Cart size={25} color="white"></Cart>
+       
+      </>
     );
 }
  
