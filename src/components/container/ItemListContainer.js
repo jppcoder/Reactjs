@@ -1,14 +1,12 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import ItemList from './ItemList';
-import {CartContext}  from '../../context/CartContext'
 import {DataContext}  from '../../context/DataContext'
 import Cart from './Cart';
 
 function ItemListContainer() {
 
-	const [products, setProducts] = useState([])
-	const [items, setItems] = useContext(CartContext);
-	const [consolas, setConsolas] = useContext(DataContext);
+	
+	const [consolas] = useContext(DataContext);
 
 	const handlerClick = () => {
 		console.log(typeof consolas)
@@ -16,16 +14,6 @@ function ItemListContainer() {
 	  }
 
 
-	useEffect(() => {
-		fetch("json/prod.json")
-		.then(response => response.json())
-		.then(datos => {
-			setProducts(datos)
-		})
-
-	},[])
-
-	
 
     return ( 
       <>
@@ -33,10 +21,6 @@ function ItemListContainer() {
 		<ItemList  array={consolas} handleClick={handlerClick}/>
 		
 	  </>
-	  
-	  
-	  
-
 
     );
 

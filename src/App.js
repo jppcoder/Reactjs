@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import './App.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -32,23 +32,21 @@ function App() {
             <Route path='/Nosotros' exact>
               <Nosotros />
             </Route>
-              
+             <DataProd>
                 <CartProd> 
-                  <DataProd>
-                    <Route path='/carrito'>
-                      <Carrito />
-                    </Route>
-                    
+                  
+                                        
                     <Route path='/' exact>
                       <ItemListContainer />
                       </Route>
                     
-                    <Route path='/cart' exact>
+                    <Route path='/Cart' exact>
                       <Cart />
                     </Route>
-                  </DataProd>
+
+                 
                 </CartProd>
-                
+              </DataProd>  
           </Switch>
       </BrowserRouter>
       </header>

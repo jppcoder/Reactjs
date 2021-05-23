@@ -7,20 +7,19 @@ import { DataContext }  from '../../context/DataContext'
 const ItemDetail = ({handleClick}) => {
 
   const {id} = useParams();
-  const [consolas, setConsolas] = useContext(DataContext);
+  const [consolas] = useContext(DataContext);
   const [filter, setFilter] = useState([]);
 
   useEffect(() => {
     
     const found = consolas.find(element => element.id == id);
     setFilter(found)
-  
+    
   }, [consolas, id])
-
-  
-
+    console.log(filter)
     return ( 
       <>
+        <div>prueba</div>
         { <div className="container">
          <Card>
             <Card.Img variant="left" src={filter.img} style={{ maxWidth:'400px' }} />
@@ -31,7 +30,6 @@ const ItemDetail = ({handleClick}) => {
               <Contador stock={filter.stock}/>
               </Card.Body>             
               <Card.Footer>
-              <Button onClick={handleClick}>test boton</Button>
                 </Card.Footer>
           </Card>  
         </div> 

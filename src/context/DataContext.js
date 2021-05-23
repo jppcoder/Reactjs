@@ -7,6 +7,7 @@ export const DataProd = ({children}) => {
 
     const [consolas, setConsolas] = useState([]);
     const [loading, setLoading] = useState(false);
+    
 
     useEffect( () => {
       setLoading(true)
@@ -23,18 +24,12 @@ export const DataProd = ({children}) => {
         .finally(()=>setLoading(false))
     
       }, [setConsolas]);
-    
-    const [idProd, setIdProd] = useState([])
+  
 
     useEffect ( () => {
       console.log("useState", consolas)
 
     }, [consolas]) 
- 
-
-    
-
-    
 
   return (
     <DataContext.Provider value={[consolas]}>

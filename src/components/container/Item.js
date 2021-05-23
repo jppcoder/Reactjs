@@ -1,15 +1,13 @@
 import React, { useContext } from 'react';
-import { Card, Button } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import { Contador } from './Contador';
 import { Link } from 'react-router-dom';
-import { CartContext, CartProd }  from '../../context/CartContext'
+import { CartContext }  from '../../context/CartContext'
 
 const Item = ({name,price,img,id,stock, key}) => {
     
-  const [idProd, setIdProd, addCart] = useContext(CartContext)
+  const [addCart] = useContext(CartContext)
 
-  
-  
     return ( 
       <> 
         
@@ -23,8 +21,6 @@ const Item = ({name,price,img,id,stock, key}) => {
               <Card.Text>${price},00</Card.Text>
               <Contador id={id} key={key} stock={stock} agregar={addCart} name={name} img={img} price={price}/>
               </Card.Body>
-              
-              {/* <Button onClick={ ()=> addCart([...idProd, id])  }>Agregar al carrito</Button> */}
               <Card.Footer>
                 <Link to={`/items/${id}`}>Mas Informacion</Link>
                 </Card.Footer>
