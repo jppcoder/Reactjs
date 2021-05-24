@@ -18,8 +18,7 @@ function ItemListContainer() {
     return ( 
       <>
 		<Cart/>
-		<ItemList  array={consolas} handleClick={handlerClick}/>
-		
+		<ItemList  array={consolas} handleClick={handlerClick}/>	
 	  </>
 
     );

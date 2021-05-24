@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { getFirestore } from '../firebase';
 
-export const DataContext = React.createContext(0)
+export const DataContext = React.createContext({})
 
 export const DataProd = ({children}) => {
 

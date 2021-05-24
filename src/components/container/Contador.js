@@ -9,7 +9,7 @@ export const Contador = ({stock, id, name, price, img}) => {
   const [idProd, setIdProd] = useContext(CartContext)
   const [tempStock, setTempStock] = useState(stock)
 
- 
+  
 
   function show () {
     alert(`Agregaste ${value} al carrito`);
@@ -27,7 +27,8 @@ export const Contador = ({stock, id, name, price, img}) => {
     setValue(value + 1);
     setTempStock(tempStock - 1);
     }
-    else {show2()
+    else {
+      show2()
     }  
   };
 
@@ -40,6 +41,7 @@ export const Contador = ({stock, id, name, price, img}) => {
   };
 
   const addCart = (x, cantidad) => {
+  // show(); muestra el producto agregado
   // si existe el id en el array, uso un ternario para agregar mas stock al id existente
   idProd.some(i => i.id == id ) ? 
   // localizo el id si es que existe en el array
@@ -66,6 +68,7 @@ export const Contador = ({stock, id, name, price, img}) => {
         {" "}
         Enviar al carrito{" "}
         </button>
+        
         
     </>
     );

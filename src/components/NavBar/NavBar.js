@@ -1,7 +1,8 @@
 
 import CartWidget from './CartWidget';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import {LinkContainer} from 'react-router-bootstrap'
 
 import React from 'react'
 
@@ -9,7 +10,7 @@ export default function NavBar() {
     return (
         <div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                    <Navbar.Brand href="/" exact >
+                    <LinkContainer to="/" exact><Navbar.Brand>
                     <Link to="/" exact><img alt="Consola retro logo" 
                         
                         src="https://image.flaticon.com/icons/png/128/2727/2727202.png"
@@ -18,14 +19,14 @@ export default function NavBar() {
                         className="d-inline-block align-top"/>
                         </Link>
                     RetroGames
-                    </Navbar.Brand>
-                    <CartWidget />
-                    <Nav.Link href="/Cart">Carrito</Nav.Link>
+                    </Navbar.Brand></LinkContainer>
+                    <LinkContainer to="/Cart"><CartWidget /></LinkContainer>
+                    <LinkContainer to="/Cart"><Nav.Link>Carrito</Nav.Link></LinkContainer> 
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="detalle productos">
-                        <Nav.Link href="/Historia">Historia</Nav.Link>
-                        <Nav.Link href="/Nosotros">Acerca de nosotros</Nav.Link>
+                        <LinkContainer to="/Historia"><Nav.Link >Historia</Nav.Link></LinkContainer>
+                        <LinkContainer to="/Nosotros"><Nav.Link >Acerca Nuestro</Nav.Link></LinkContainer>
                         <NavDropdown title="Productos" id="collasible-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Consolas</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">Bartop</NavDropdown.Item>

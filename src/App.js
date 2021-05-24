@@ -23,31 +23,20 @@ function App() {
     <div className="App container fluid">
       <header className="App-header">
       <BrowserRouter> 
-        <NavBar />         
-          <Switch>
-            <Route path='/Historia' exact>
-              <Historia />
-            </Route>
-            
-            <Route path='/Nosotros' exact>
-              <Nosotros />
-            </Route>
-             <DataProd>
-                <CartProd> 
-                  
-                                        
-                    <Route path='/' exact>
-                      <ItemListContainer />
-                      </Route>
-                    
-                    <Route path='/Cart' exact>
-                      <Cart />
-                    </Route>
-
-                 
-                </CartProd>
-              </DataProd>  
-          </Switch>
+        <DataProd>
+          <CartProd> 
+            <NavBar />         
+            <Switch>
+              <Route path='/Historia' exact component={Historia} />
+              <Route path='/Nosotros' exact component={Nosotros} /> 
+              <Route path='/Cart' >
+                    <Cart />
+              </Route>  
+              <Route path='/' exact component={ItemListContainer} />   
+            </Switch>
+          </CartProd>
+        </DataProd>
+     
       </BrowserRouter>
       </header>
     </div>

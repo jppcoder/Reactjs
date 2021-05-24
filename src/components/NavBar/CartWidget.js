@@ -5,7 +5,7 @@ const CartWidget = () => {
     return (  
       <>
         <Cart size={25} color="white"></Cart>
-       
+        
       </>
     );
 }
