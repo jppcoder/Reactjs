@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Card, Button } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import { useParams } from 'react-router';
 import { Contador } from './Contador';
 import { DataContext }  from '../../context/DataContext'
@@ -16,10 +16,11 @@ const ItemDetail = ({handleClick}) => {
     setFilter(found)
     
   }, [consolas, id])
+    
     console.log(filter)
     return ( 
       <>
-        <div>prueba</div>
+        
         { <div className="container">
          <Card>
             <Card.Img variant="left" src={filter.img} style={{ maxWidth:'400px' }} />
@@ -27,7 +28,7 @@ const ItemDetail = ({handleClick}) => {
               <Card.Title>{filter.name}</Card.Title>
               <Card.Text>${filter.price},00</Card.Text>
               <Card.Text>${filter.desc}</Card.Text>
-              <Contador stock={filter.stock}/>
+              <Contador id={filter.id} key={filter.key} name={filter.name} img={filter.img} price={filter.price}  stock={filter.stock}/>
               </Card.Body>             
               <Card.Footer>
                 </Card.Footer>
