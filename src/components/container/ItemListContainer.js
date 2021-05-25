@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import ItemList from './ItemList';
 import {DataContext}  from '../../context/DataContext'
-import Cart from './Cart';
+import SearchBar from './SearchBar';
+
 
 function ItemListContainer() {
 
@@ -17,7 +18,7 @@ function ItemListContainer() {
 
     return ( 
       <>
-		<Cart/>
+	  	
 		<ItemList  array={consolas} handleClick={handlerClick}/>	
 	  </>
 

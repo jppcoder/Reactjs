@@ -16,9 +16,8 @@ const Item = ({name,price,img,id,stock, key}) => {
           <Card style={{ width: '18rem', height:'40rem' }}>
             <Card.Img variant="top" src={img} style={{ maxHeight:'15rem' }} />
             <Card.Body>
-              <Card.Text>{id}</Card.Text>
               <Card.Title>{name}</Card.Title>
-              <Card.Text>${price},00</Card.Text>
+              <Card.Text mb-3 >${price},00</Card.Text>
               <Contador id={id} key={key} stock={stock} agregar={addCart} name={name} img={img} price={price}/>
               </Card.Body>
               <Card.Footer>
