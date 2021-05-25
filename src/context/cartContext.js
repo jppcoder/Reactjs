@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from 'react'
+import React, { useState, useEffect} from 'react'
 import { set } from 'react-hook-form';
 
 
@@ -9,17 +9,17 @@ export const CartProd = ({children}) => {
     
     const [idProd, setIdProd] = useState([]);
     const [total, setTotal] = useState([]);
+    const [unit, setUnit] = useState([]);
     
+    
+    const hacer = []
+    hacer.idProd = idProd
+    hacer.setIdProd = setIdProd
+    hacer.total = total
+    hacer.setTotal = setTotal
+    hacer.unit = unit
+    hacer.setUnit = setUnit
 
-    useEffect(() => {
-      
-      console.log("esto se va agragando a carrito", idProd)
-      console.log("total es:", total)
-
-    }, [idProd, total])
-    
-    const hacer = {}
-    
     hacer.agregar = (x) =>  idProd.find(i => ( i.id == x ) && ( i.cantidad += 1) ) 
                           && setIdProd ([...idProd])
 
@@ -32,10 +32,23 @@ export const CartProd = ({children}) => {
     }
     
     hacer.vaciar = () =>setIdProd([])
+    
+    useEffect(() => {
+      const unid = idProd.reduce((a,b)=>(a + b.cantidad),0)
+      setUnit(unid)
+      
+    }, [idProd])
+
+    useEffect(() => {
      
-  
+      const Total = idProd.reduce((a,b)=>(a + (b.price * b.cantidad)),0)
+      setTotal(Total)
+      
+    }, [idProd])
+    
+    
   return (
-    <CartContext.Provider value={[idProd, setIdProd, hacer, total, setTotal]}>
+    <CartContext.Provider value={[idProd, setIdProd, hacer, total, setTotal, unit, setUnit]}>
       {children}
     </ CartContext.Provider>
   )

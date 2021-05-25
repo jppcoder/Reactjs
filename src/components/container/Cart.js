@@ -1,32 +1,16 @@
 import React, {useContext, useEffect, useState} from 'react'
 import { CartContext }  from '../../context/CartContext'
 import Table from 'react-bootstrap/Table'
+import { set } from 'react-hook-form'
 
 
 
 export default function Cart() {
 
     const [idProd, setIdProd, hacer] = useContext(CartContext)
-    const [unit, setUnit] = useState([]);
-    const [total, setTotal] = useState([]);
     
-    useEffect(() => {
     
-      console.log("este es el del carrito", idProd)
-      
-      
-
-    }, [idProd])
-
-    useEffect(() => {
-      const unid = idProd.reduce((a,b)=>(a + b.cantidad),0)
-      setUnit(unid)
-      
-      const Total = idProd.reduce((a,b)=>(a + (b.price * b.cantidad)),0)
-      setTotal(Total)
-
-    }, [idProd, setUnit, setTotal])
-
+   
     return (
         <>
 
@@ -38,8 +22,6 @@ export default function Cart() {
                 <th>Nombre</th>
                 <th>Precio</th>
                 <th>Eliminar</th>
-                
-
               </tr>
             </thead>
             <tbody>
@@ -58,8 +40,8 @@ export default function Cart() {
             
           </Table>
           <div className="tfoot">  
-              <h5>Unidades: {unit} </h5>
-              <h5>Total: {total} </h5>
+              <h5>Unidades: {hacer.unit} </h5>
+              <h5>Total: {hacer.total} </h5>
               <button className="btn btn-danger btn-circle" onClick={hacer.vaciar}> Borrar Carrito </button>
             </div>  
     </>

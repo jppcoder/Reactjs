@@ -21,7 +21,7 @@ export default function NavBar() {
                     RetroGames
                     </Navbar.Brand></LinkContainer>
                     <LinkContainer to="/Cart"><CartWidget /></LinkContainer>
-                    <LinkContainer to="/Cart"><Nav.Link>Carrito</Nav.Link></LinkContainer> 
+                    <LinkContainer to="/Cart"><Nav.Link>Carrito</Nav.Link></LinkContainer>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="detalle productos">
