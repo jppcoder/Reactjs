@@ -15,6 +15,7 @@ const ItemDetail = ({handleClick}) => {
     const found = consolas.find(element => element.id == id);
     setFilter(found)
     
+    
   }, [consolas, id])
     
     console.log(filter)
