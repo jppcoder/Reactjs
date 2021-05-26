@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {InputGroup, FormControl, Button} from 'react-bootstrap'
-
+import {DataContext}  from '../../context/DataContext'
+import ToggleSearch from './ToggleSearch';
 
 const SearchBar = ({}) => {
     
+    const [consolas, fire] = useContext(DataContext)
+    const [variable, setVariable] = useState(["hola"])
+  
 
     return (
       <>
@@ -17,6 +21,8 @@ const SearchBar = ({}) => {
             <Button variant="outline-secondary">Button</Button>
             </InputGroup.Append>
         </InputGroup>
+        
+        <ToggleSearch fire={fire}/>
       </>
 
     )

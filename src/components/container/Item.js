@@ -11,9 +11,8 @@ const Item = ({name,price,img,id,stock, key}) => {
     return ( 
       <> 
         
-        <div className="col"
-          key={key}>
-          <Card style={{ width: '18rem', height:'40rem' }}>
+        
+          <Card style={{ minWidth: '22em', height:'35rem' }} key={key}>
             <Card.Img variant="top" src={img} style={{ maxHeight:'15rem' }} />
             <Card.Body>
               <Card.Title>{name}</Card.Title>
@@ -24,7 +23,7 @@ const Item = ({name,price,img,id,stock, key}) => {
                 <Link to={`/items/${id}`}>Mas Informacion</Link>
                 </Card.Footer>
           </Card>  
-        </div>  
+         
       </> 
     );
 }

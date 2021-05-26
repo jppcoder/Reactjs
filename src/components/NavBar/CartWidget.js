@@ -21,8 +21,7 @@ const CartWidget = () => {
     if (widget > 0) { setEstado("activo")} else { setEstado("noshow")}
   }, [widget])
 
-  console.log(estado)
-  console.log("widget", widget)
+  
   return (  
       <>
       <div>
