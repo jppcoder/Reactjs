@@ -4,6 +4,7 @@ import { Contador } from './Contador';
 import { Link } from 'react-router-dom';
 import { CartContext }  from '../../context/CartContext'
 
+
 const Item = ({name,price,img,id,stock, key}) => {
     
   const [addCart] = useContext(CartContext)
@@ -11,7 +12,7 @@ const Item = ({name,price,img,id,stock, key}) => {
     return ( 
       <> 
         
-        
+          
           <Card style={{ minWidth: '22em', height:'35rem' }} key={key}>
             <Card.Img variant="top" src={img} style={{ maxHeight:'15rem' }} />
             <Card.Body>
