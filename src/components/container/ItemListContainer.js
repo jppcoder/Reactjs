@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import ItemList from './ItemList';
 import {DataContext}  from '../../context/DataContext'
-
+import Spinner from 'react-bootstrap/Spinner'
 
 
 function ItemListContainer() {
 
 	
-	const [filtConsolas] = useContext(DataContext);
+	const [filtConsolas, fire, loading, setLoading] = useContext(DataContext);
 
 	const handlerClick = () => {
 		
@@ -18,8 +18,8 @@ function ItemListContainer() {
 
     return ( 
       <>
-	  	
-		<ItemList  array={filtConsolas} handleClick={handlerClick}/>	
+	  	{ loading ? <div className="spinner"><Spinner animation="border" className=" v-center" /></div> :
+		<ItemList  array={filtConsolas} handleClick={handlerClick}/>}	
 	  </>
 
     );

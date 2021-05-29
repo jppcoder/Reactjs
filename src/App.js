@@ -22,7 +22,7 @@ function App() {
   return ( 
     <DataProd>
       <CartProd>
-        <div className="App container">
+        <div className="App">
           <header className="App-header">
             <BrowserRouter> 
               

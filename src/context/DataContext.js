@@ -68,7 +68,7 @@ export const DataProd = ({children}) => {
     console.log(tipo)
 
   return (
-    <DataContext.Provider value={[filtConsolas, fire]}>
+    <DataContext.Provider value={[filtConsolas, fire, loading, setLoading]}>
       {children}
     </ DataContext.Provider>
   )

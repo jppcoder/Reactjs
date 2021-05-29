@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { ShieldShaded } from 'react-bootstrap-icons';
 import { CartContext }  from '../../context/CartContext'
-
+import  Cartel  from './Cartel';
 
 
 export const Contador = ({stock, id, name, price, img}) => {
@@ -11,6 +11,7 @@ export const Contador = ({stock, id, name, price, img}) => {
   const [tempStock, setTempStock] = useState(stock)
   const [estado, setEstado] = useState(false)
   const [saldo, setSaldo] = useState("")
+  const [showToast, setShowToast] = useState(false)
 
   function show () {
     alert(`Agregaste ${value} al carrito`);  
@@ -28,7 +29,7 @@ export const Contador = ({stock, id, name, price, img}) => {
     setTempStock(tempStock - 1);
     }
     else {
-      setSaldo("No puede agregar items por falta de stock")
+      setShowToast(true)
     }  
   };
 
@@ -76,7 +77,7 @@ export const Contador = ({stock, id, name, price, img}) => {
         Agregar al carrito
         </button>
         <h5>{saldo}</h5>
-        
+        <Cartel showToast={showToast} setShowToast={setShowToast} texto={"no hay mas stock"}/>
     </>
     );
 };
