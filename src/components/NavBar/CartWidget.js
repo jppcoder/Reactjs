@@ -1,8 +1,8 @@
 import React, {  useEffect, useContext, useState} from 'react';
-import { Link } from 'react-router-dom';
 import Badge from 'react-bootstrap/Badge';
 import { CartContext }  from '../../context/CartContext'
-
+import { Cart } from 'react-bootstrap-icons';
+import {LinkContainer} from 'react-router-bootstrap'
 
 const CartWidget = () => {
     
@@ -25,8 +25,8 @@ const CartWidget = () => {
   return (  
       <>
       <div>
-        {/* <Cart size={25} color="white"></Cart> */}
-        <Link to="/Cart"><img  src="https://res.cloudinary.com/dhngiwzze/image/upload/v1621891195/cart_auc1pl.png" style={{ maxWidth:'30px', maxHeight:'30px' }} ></img></Link>
+      <LinkContainer to="/Cart"><Cart className="mt-2" color="white" size={26}/></LinkContainer>
+        {/* <Link to="/Cart"><img  src="https://res.cloudinary.com/dhngiwzze/image/upload/v1621891195/cart_auc1pl.png" style={{ maxWidth:'30px', maxHeight:'30px' }} ></img></Link> */}
         
 		  <Badge pill variant="warning" className={estado}>
         {widget}

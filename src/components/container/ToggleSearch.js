@@ -15,8 +15,8 @@ const ToggleSearch= ({fire}) => {
   
     return (
         <> 
-            <div>
-                <ToggleButtonGroup type="radio" name="options" defaultValue={1} className="mr-5" >
+            <div className="container">
+                <ToggleButtonGroup className="m-2" type="radio" name="options" defaultValue={1}  >
                     <ToggleButton variant="outline-secondary" sm onClick={fire.todos} value={1}>Todos</ToggleButton>
                     <ToggleButton variant="outline-secondary" sm onClick={fire.mil} value={0}>+1000</ToggleButton>
                     <ToggleButton variant="outline-secondary" sm onClick={fire.cinco} value={2}>+5000</ToggleButton>

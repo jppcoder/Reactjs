@@ -1,8 +1,9 @@
 
 import CartWidget from './CartWidget';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {LinkContainer} from 'react-router-bootstrap'
+import { ArrowRight, Cart, PersonSquare } from 'react-bootstrap-icons';
 
 import React from 'react'
 
@@ -24,7 +25,7 @@ export default function NavBar() {
                     </Navbar.Brand>
                 </LinkContainer>
                     
-                    <LinkContainer to="/Cart"><CartWidget /></LinkContainer>
+                  
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         
                     <Navbar.Collapse id="responsive-navbar-nav" className="mr-auto">
@@ -47,7 +48,12 @@ export default function NavBar() {
                             <Nav.Link href="#deets">Redes Sociales</Nav.Link>
                             <Nav.Link eventKey={2} href="#memes"></Nav.Link>  
                         </Nav>
-                    </Navbar.Collapse>           
+                    </Navbar.Collapse>
+                    <div className="d-flex">
+                        <LinkContainer to="/Cart"><CartWidget /></LinkContainer>
+                        <LinkContainer to="/User" className="m-2 mt-2" ><PersonSquare  color="white" size={25}/></LinkContainer>     
+                    </div>
+
             </Navbar>
  
         

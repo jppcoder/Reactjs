@@ -2,6 +2,7 @@ import React from 'react';
 import Item from './Item';
 import { BrowserRouter, Switch, Route} from 'react-router-dom';
 import ItemDetail from './ItemDetail';
+import SearchBar from './SearchBar';
 
 
 const ItemList = ({array}) => {
@@ -11,6 +12,7 @@ const ItemList = ({array}) => {
       
         <div className="card-deck"> 
         <BrowserRouter>
+            <SearchBar />
             <Switch>
                 <Route path='/items/:id'>
                     <ItemDetail  />

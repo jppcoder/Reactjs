@@ -17,11 +17,11 @@ import { DataProd } from './context/DataContext';
 
 //useContext
 
-import { CartContext }  from '../../context/CartContext'
+
 
 function App() {
 
-  const [idProd, setIdProd, hacer, total, setTotal, unit, setUnit] = useContext(CartContext)
+ 
 
   return ( 
     <DataProd>
@@ -35,13 +35,9 @@ function App() {
                   <Switch>
                     <Route path='/Historia' exact component={Historia} />
                     <Route path='/Nosotros' exact component={Nosotros} /> 
-                    { hacer.condicion = true ? 
                     <Route path='/User' exact component={User} />
-                    :
-                    <Route path='/Cart' >
-                      <Cart />
-                    </Route>  
-                    }
+                    <Route path='/Cart' exact component={Cart} />
+                    
                     <Route path='/' exact component={ItemListContainer} />   
                   </Switch>
                 

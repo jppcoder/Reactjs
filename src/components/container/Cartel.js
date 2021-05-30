@@ -1,16 +1,20 @@
 
-import React, {useContext, useState} from 'react'
+import React from 'react'
 import Toast from 'react-bootstrap/Toast'
-import { Row, Col, Button } from 'react-bootstrap';
-import { CartContext }  from '../../context/CartContext'
+import { Row, Col } from 'react-bootstrap';
+
 
 const Cartel = ({showToast, setShowToast, texto}) => {
     
 
   return (
-    <Row>
+    <Row >
       <Col xs={6}>
-        <Toast onClose={() => setShowToast(false)} show={showToast} delay={3000} autohide>
+        <Toast style={{
+                    position: 'absolute',
+                    top: -150,
+                    right: -150,
+    }} onClose={() => setShowToast(false)} show={showToast} delay={3500} autohide>
           <Toast.Header>
             <img
               src="holder.js/20x20?text=%20"

@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react'
 import { ShieldShaded } from 'react-bootstrap-icons';
 import { CartContext }  from '../../context/CartContext'
 import  Cartel  from './Cartel';
-
+import { Button } from 'react-bootstrap'
 
 export const Contador = ({stock, id, name, price, img}) => {
   
@@ -65,17 +65,17 @@ export const Contador = ({stock, id, name, price, img}) => {
     <>  
         <p>Stock: {tempStock}</p>
 
-        <button className="btn btn-primary plusCircle" onClick={add}>
-          +  
-        </button>
+        <Button className="btn btn-primary"  onClick={remove}>
+        -   
+        </Button>
         <span className="m-2">   {value}    </span>
-         <button onClick={remove} className="btn btn-danger">
-        -  
-        </button>
+         <Button onClick={add} className="btn btn-danger">
+        +  
+        </Button>
         <br></br>
-        <button disabled={!estado} className="btn btn-warning mt-2" onClick={() => addCart([{id: id, cantidad: value, name: name, price: price, img: img}])}>
+        <Button disabled={!estado} className="btn btn-warning mt-2" onClick={() => addCart([{id: id, cantidad: value, name: name, price: price, img: img}])}>
         Agregar al carrito
-        </button>
+        </Button>
         <h5>{saldo}</h5>
         <Cartel showToast={showToast} setShowToast={setShowToast} texto={"no hay mas stock"}/>
     </>

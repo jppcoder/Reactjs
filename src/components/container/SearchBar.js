@@ -11,15 +11,15 @@ const SearchBar = ({}) => {
 
     return (
       <>
-        <InputGroup className="mb-3">
+        <InputGroup className="m-3">
             <FormControl
             placeholder="Recipient's username"
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
             />
-            <InputGroup.Append>
+          <InputGroup.Append>
             <Button variant="outline-secondary">Button</Button>
-            </InputGroup.Append>
+          </InputGroup.Append>
         </InputGroup>
         
         <ToggleSearch fire={fire}/>

@@ -1,6 +1,9 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect, Link} from 'react'
 import { set } from 'react-hook-form';
 import { getFirestore } from '../firebase';
+
+import User from '../components/User/User';
+
 
 export const CartContext = React.createContext([])
 
@@ -11,10 +14,8 @@ export const CartProd = ({children}) => {
     const [total, setTotal] = useState([]);
     const [unit, setUnit] = useState([]);
     const [order, setOrder] = useState([]);
-    const [user, setUser] = useState({
-      name: "John Rambo",
-      email: "siempreviva@simpsons.com",
-    });
+    const [condicion, setCondicion] = useState(false);
+    const [user, setUser] = useState({});
 
     
     const dat = getFirestore();
@@ -33,21 +34,29 @@ export const CartProd = ({children}) => {
     
     const hacer = []
 
-
+  
     hacer.handleCompra = () => {
+      if (hacer.user != null) {
       let order = {
         buyer: {
-          name: user.name,
+          
           email: user.email,
         }, 
       idProd, 
       total,
     }
     idProd.length && setOrder(order)
-    
+    } else {
+      
+      setCondicion(true)
+      console.log("esta asi", condicion)
+    }
     }
     console.log(order)
-    
+    hacer.condicion = condicion
+    hacer.setCondicion = setCondicion
+    hacer.user = user
+    hacer.setUser = setUser
     hacer.idProd = idProd
     hacer.setIdProd = setIdProd
     hacer.total = total

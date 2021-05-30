@@ -32,6 +32,7 @@ export const DataProd = ({children}) => {
       const db = getFirestore();
       const itemsCollection = db.collection("prod");
       const search = itemsCollection.where(donde[0], donde[1], donde[2])
+     
       search.get()
         .then((querySnapShot) => {
           querySnapShot.size === 0 ? console.log("no hay items") : console.log("items en Firebase", (querySnapShot.size))
