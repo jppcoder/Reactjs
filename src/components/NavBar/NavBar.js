@@ -3,14 +3,14 @@ import CartWidget from './CartWidget';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import {LinkContainer} from 'react-router-bootstrap'
-import { ArrowRight, Cart, PersonSquare } from 'react-bootstrap-icons';
+import { PersonSquare, TextCenter } from 'react-bootstrap-icons';
 
 import React from 'react'
 
 export default function NavBar() {
     return (
        
-            <Navbar   collapse OnSelect expand="lg"  bg="dark" variant="dark" >
+            <Navbar   collapse OnSelect expand="lg"  bg="dark" variant="dark"  >
                 <LinkContainer to="/" exact>
                     <Navbar.Brand>
                         <Link to="/" exact><img alt="Consola retro logo" 
@@ -28,8 +28,8 @@ export default function NavBar() {
                   
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         
-                    <Navbar.Collapse id="responsive-navbar-nav" className="mr-auto">
-                        <Nav className="detalle productos mr-auto">
+                    <Navbar.Collapse id="responsive-navbar-nav "  className="ml-5">
+                        <Nav className="detalle productos mr-auto  "> 
                             
                             <LinkContainer to="/Historia"><Nav.Link >Historia</Nav.Link></LinkContainer>
                             <LinkContainer to="/Nosotros"><Nav.Link >Acerca Nuestro</Nav.Link></LinkContainer>
@@ -44,10 +44,6 @@ export default function NavBar() {
                         
                         </Nav>
                        
-                        <Nav>
-                            <Nav.Link href="#deets">Redes Sociales</Nav.Link>
-                            <Nav.Link eventKey={2} href="#memes"></Nav.Link>  
-                        </Nav>
                     </Navbar.Collapse>
                     <div className="d-flex">
                         <LinkContainer to="/Cart"><CartWidget /></LinkContainer>

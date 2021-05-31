@@ -24,12 +24,13 @@ const Signup = () => {
             .catch(err =>  { setError(err.message); setShowToast(true)} 
             
             )
+            hacer.setCondicion(true);
     }
 
 
     useEffect(() => {
         app.auth().onAuthStateChanged(hacer.setUser)
-        console.log(hacer.user)
+        
     }, [hacer])
 
     return (  

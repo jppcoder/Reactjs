@@ -17,8 +17,7 @@ const User = () => {
     const [showToast, setShowToast] = useState(false)
     const [userAuth, setUserAuth] = useState([])
 
-    console.log(mail);
-    console.log(passw);
+    
 
     const loguearUsuario = (e) => {
         e.preventDefault()
@@ -27,6 +26,7 @@ const User = () => {
         .catch(err =>  { setError(err.message); setShowToast(true)} 
             
         )
+        hacer.setCondicion(true);
     }
 
     

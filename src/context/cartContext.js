@@ -33,7 +33,7 @@ export const CartProd = ({children}) => {
     }, [order])
     
     const hacer = []
-
+    
   
     hacer.handleCompra = () => {
       if (hacer.user != null) {
@@ -48,8 +48,8 @@ export const CartProd = ({children}) => {
     idProd.length && setOrder(order)
     } else {
       
-      setCondicion(true)
-      console.log("esta asi", condicion)
+      hacer.setCondicion(true)
+      
     }
     }
     console.log(order)
@@ -92,6 +92,9 @@ export const CartProd = ({children}) => {
       
     }, [idProd])
     
+    useEffect(() => {
+      console.log("usuario", hacer.user)
+    }, [hacer])
     
   return (
     <CartContext.Provider value={[idProd, setIdProd, hacer, total, setTotal, unit, setUnit]}>

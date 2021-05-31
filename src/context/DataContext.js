@@ -65,9 +65,7 @@ export const DataProd = ({children}) => {
       
     }, [consolas, tipo, estadoInicial])
     
-    console.log(filtConsolas)
-    console.log(tipo)
-
+    
   return (
     <DataContext.Provider value={[filtConsolas, fire, loading, setLoading]}>
       {children}

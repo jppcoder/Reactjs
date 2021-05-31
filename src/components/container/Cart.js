@@ -1,4 +1,4 @@
-import React, {useContext } from 'react'
+import React, {useContext, useEffect } from 'react'
 import { CartContext }  from '../../context/CartContext'
 import Table from 'react-bootstrap/Table'
 import {LinkContainer} from 'react-router-bootstrap'
@@ -6,13 +6,17 @@ import { Jumbotron, Button } from 'react-bootstrap'
 
 
 
+
 export default function Cart() {
 
     const [idProd, setIdProd, hacer, total, setTotal, unit, setUnit] = useContext(CartContext)
-    console.log("estado carrito", idProd)
     
-   
-    return (
+    
+    useEffect(() => {
+      
+    }, [hacer.user])
+
+   return (
       <> 
         { unit == 0 ?  
         
@@ -62,7 +66,11 @@ export default function Cart() {
                 <h5>Unidades: {hacer.unit}</h5>
                 <h5>Total: {hacer.total} </h5>
                 <button className="btn btn-danger" onClick={hacer.vaciar}> Vaciar Carrito </button>
-                <button className="btn btn-success" onClick={hacer.handleCompra}> Finalizar Pedido </button>
+                
+                { hacer.condicion == false ? <LinkContainer to="User">
+                  <button className="btn btn-success" > LogIn / Registrarse </button>
+                </LinkContainer> : 
+                <button className="btn btn-success" onClick={hacer.handleCompra}> Finalizar Pedido </button>}
                 <LinkContainer to="/">
                   <button className="btn btn-primary" > Regresar </button>
                 </LinkContainer>
@@ -70,5 +78,5 @@ export default function Cart() {
           </> 
         }
       </> 
-    )
+    ) 
 }
