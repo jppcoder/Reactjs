@@ -29,10 +29,16 @@ const Signup = () => {
 
 
     useEffect(() => {
-        app.auth().onAuthStateChanged(hacer.setUser)
+        app.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            hacer.setUser(user.email)
+  
+          } else {
+            hacer.setUser(null)
+          }
+        });
         
-    }, [hacer])
-
+      }, [hacer])
     return (  
         <> 
             <div className="container" >

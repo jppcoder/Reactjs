@@ -1,46 +1,39 @@
 import React, {  useEffect, useContext, useState} from 'react';
 import { auth } from '../../firebase';
 import { CartContext }  from '../../context/CartContext' 
+import { DataContext }  from '../../context/DataContext' 
 import {  Button, Nav, Tab, Tabs } from 'react-bootstrap'
 import app from '../../firebase';
 import Login from './Login'
 import Signup from './Signup'
 import {LinkContainer} from 'react-router-bootstrap'
+import Orders from '../container/Orders';
 
 const User = () => {
     
     const [idProd, setIdProd, hacer, total, setTotal, unit, setUnit] = useContext(CartContext)
-
-    const [email, setEmail] = useState('')
-    const [pass, setPass] = useState('')
+    const [filtConsolas, fire, loading, setLoading, orderList, setOrderList, mail, setMail] = useContext(DataContext)
     const [error, setError] = useState([])
     const [showToast, setShowToast] = useState(false)
-    
-
-    
+ 
     const logout = (e) => {
         e.preventDefault()
         app.auth().signOut()
         hacer.setCondicion(false);
        
     }
-
-    useEffect(() => {
-        app.auth().onAuthStateChanged(hacer.setUser);
-        
-
-    }, [hacer])
-
+    
     return (  
         <> 
             <div className="container mt-5 rounded p-3" style={{ maxWidth: '35em', backgroundColor:"#f8f9fa" }} >
-            { hacer.user? 
+            { mail? 
             
             <>
-                <h4>Hola! Que bueno que nos visites {hacer.user.email}</h4>
+                <h4>Hola! Que bueno que nos visites {mail}</h4>
                 <Button variant="danger" type="button" className="m-3" onClick={logout}>
                     Sign Out
                 </Button> 
+                
                 <LinkContainer to="/">
                     <Button variant="primary" className=" m-3" > Regresar </Button>
                 </LinkContainer>
@@ -56,7 +49,7 @@ const User = () => {
                
             </Tabs>    
             }
-        
+            <Orders  />
             </div>
         </>    
     );

@@ -3,6 +3,7 @@ import { CartContext }  from '../../context/CartContext'
 import Table from 'react-bootstrap/Table'
 import {LinkContainer} from 'react-router-bootstrap'
 import { Jumbotron, Button } from 'react-bootstrap'
+import Orders from './Orders'
 
 
 
@@ -67,7 +68,7 @@ export default function Cart() {
                 <h5>Total: {hacer.total} </h5>
                 <button className="btn btn-danger" onClick={hacer.vaciar}> Vaciar Carrito </button>
                 
-                { hacer.condicion == false ? <LinkContainer to="User">
+                { hacer.user == null ? <LinkContainer to="User">
                   <button className="btn btn-success" > LogIn / Registrarse </button>
                 </LinkContainer> : 
                 <button className="btn btn-success" onClick={hacer.handleCompra}> Finalizar Pedido </button>}
@@ -75,6 +76,7 @@ export default function Cart() {
                   <button className="btn btn-primary" > Regresar </button>
                 </LinkContainer>
             </div>  
+                <Orders />
           </> 
         }
       </> 

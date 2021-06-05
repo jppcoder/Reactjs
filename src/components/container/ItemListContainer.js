@@ -11,7 +11,7 @@ function ItemListContainer() {
 
 	const handlerClick = () => {
 		
-		console.log(filtConsolas)
+	
 	  }
 
 

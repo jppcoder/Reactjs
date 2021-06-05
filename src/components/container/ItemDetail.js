@@ -18,7 +18,7 @@ const ItemDetail = ({handleClick}) => {
     
   }, [consolas, id])
     
-    console.log(filter)
+    
     return ( 
       <>
         

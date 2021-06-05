@@ -11,7 +11,7 @@ import User from '../User/User'
 export default function Exit() {
 
     const [idProd, setIdProd, hacer, total, setTotal, unit, setUnit] = useContext(CartContext)
-    console.log("estado carrito", idProd)
+    
     
     
 

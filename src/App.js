@@ -37,7 +37,6 @@ function App() {
                     <Route path='/Nosotros' exact component={Nosotros} /> 
                     <Route path='/User' exact component={User} />
                     <Route path='/Cart' exact component={Cart} />
-                    
                     <Route path='/' exact component={ItemListContainer} />   
                   </Switch>
                 

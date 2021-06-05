@@ -1,28 +1,26 @@
-import React, { useState, useEffect, Link} from 'react'
-import { set } from 'react-hook-form';
+import React, { useState, useEffect, useContext} from 'react'
 import { getFirestore } from '../firebase';
+import firebase from 'firebase/app';
+import { DataContext } from './DataContext';
 
-import User from '../components/User/User';
 
 
 export const CartContext = React.createContext([])
 
 export const CartProd = ({children}) => {
 
-    
+    const [filtConsolas, fire, loading, setLoading, orderList, setOrderList, mail, setMail, eliminaRegistro, setEliminaRegistro] = useContext(DataContext)
     const [idProd, setIdProd] = useState([]);
     const [total, setTotal] = useState([]);
     const [unit, setUnit] = useState([]);
     const [order, setOrder] = useState([]);
     const [condicion, setCondicion] = useState(false);
-    const [user, setUser] = useState({});
-
-    
+    const [user, setUser] = useState({});    
     const dat = getFirestore();
     const orders = dat.collection("orders");
     
     useEffect(() => {
-      console.log("order de useffect", order);
+     
       if (order.idProd) {
         orders.add(order)
           .then((id)=>{console.log("id", id)
@@ -37,22 +35,23 @@ export const CartProd = ({children}) => {
   
     hacer.handleCompra = () => {
       if (hacer.user != null) {
-      let order = {
+        eliminaRegistro? setEliminaRegistro(false) : setEliminaRegistro(true);
+        let order = {
         buyer: {
-          
-          email: user.email,
+          email: mail,
         }, 
+      fecha: firebase.firestore.Timestamp.fromDate(new Date()),  
       idProd, 
       total,
+      
     }
     idProd.length && setOrder(order)
+    
     } else {
-      
-      hacer.setCondicion(true)
-      
+      hacer.setCondicion(true)    
     }
     }
-    console.log(order)
+    
     hacer.condicion = condicion
     hacer.setCondicion = setCondicion
     hacer.user = user
@@ -93,8 +92,16 @@ export const CartProd = ({children}) => {
     }, [idProd])
     
     useEffect(() => {
-      console.log("usuario", hacer.user)
-    }, [hacer])
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          fire.setMail(user.email)
+
+        } else {
+          fire.setMail(null)
+        }
+      });
+      
+    }, [fire.setMail])
     
   return (
     <CartContext.Provider value={[idProd, setIdProd, hacer, total, setTotal, unit, setUnit]}>
