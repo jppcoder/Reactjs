@@ -34,7 +34,7 @@ export const CartProd = ({children}) => {
     
   
     hacer.handleCompra = () => {
-      if (hacer.user != null) {
+      if (mail != null) {
         eliminaRegistro? setEliminaRegistro(false) : setEliminaRegistro(true);
         let order = {
         buyer: {
