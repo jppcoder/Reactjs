@@ -1,13 +1,20 @@
-import React, {  useEffect, useContext, useState} from 'react';
-import { auth } from '../../firebase';
+import React, {  useContext, useState} from 'react';
+
+//Context
 import { CartContext }  from '../../context/CartContext' 
-import { DataContext }  from '../../context/DataContext' 
+import { DataContext }  from '../../context/DataContext'
+
+//bootstrap
 import {  Button, Nav, Tab, Tabs } from 'react-bootstrap'
+import {LinkContainer} from 'react-router-bootstrap'
+
+//imports componentes
 import app from '../../firebase';
 import Login from './Login'
 import Signup from './Signup'
-import {LinkContainer} from 'react-router-bootstrap'
 import Orders from '../container/Orders';
+
+
 
 const User = () => {
     

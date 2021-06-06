@@ -1,7 +1,7 @@
-import React, {  useEffect, useContext, useState} from 'react';
+import React, {   useContext, useState} from 'react';
 import { auth } from '../../firebase';
 import { CartContext }  from '../../context/CartContext' 
-import { Jumbotron, Form, Button, Nav } from 'react-bootstrap'
+import {  Form, Button} from 'react-bootstrap'
 import  Cartel  from './../container/Cartel'
 import app from '../../firebase';
 
@@ -10,26 +10,21 @@ import app from '../../firebase';
 const User = () => {
     
     const [idProd, setIdProd, hacer, total, setTotal, unit, setUnit] = useContext(CartContext)
-
     const [mail, setMail] = useState('')
     const [passw, setPassw] = useState('')
     const [error, setError] = useState([])
     const [showToast, setShowToast] = useState(false)
-    const [userAuth, setUserAuth] = useState([])
-
     
 
+    
     const loguearUsuario = (e) => {
         e.preventDefault()
         app.auth().signInWithEmailAndPassword(mail, passw)
         .then((res) => console.log(res))
-        .catch(err =>  { setError(err.message); setShowToast(true)} 
-            
+        .catch(err =>  { setError(err.message); setShowToast(true)}   
         )
         hacer.setCondicion(true);
     }
-
-    
 
     return (  
     <> 
@@ -38,14 +33,12 @@ const User = () => {
              <Form className="container" onSubmit={loguearUsuario} >
                 <h4 className=" mb-3 p-2"> Ingrese su usuario </h4>
                 <Form.Group
-                    
-                    controlId="mail"> 
+                     controlId="mail"> 
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" 
                                 placeholder="Ingrese su email" 
                                 name="mail" 
-                                onChange={(e) => {setMail(e.target.value)}} />
-                    
+                                onChange={(e) => {setMail(e.target.value)}} /> 
                 </Form.Group>
 
                 <Form.Group className="mt-3 mb-3"

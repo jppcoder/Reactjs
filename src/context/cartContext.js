@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useContext} from 'react'
+
+//acceso a firebase
 import { getFirestore } from '../firebase';
 import firebase from 'firebase/app';
+
+//context
 import { DataContext } from './DataContext';
 
 
-
 export const CartContext = React.createContext([])
-
 export const CartProd = ({children}) => {
 
     const [filtConsolas, fire, loading, setLoading, orderList, setOrderList, mail, setMail, eliminaRegistro, setEliminaRegistro] = useContext(DataContext)
@@ -27,12 +29,26 @@ export const CartProd = ({children}) => {
           })
           .catch((err)=> console.err("error", err))
       }
-    
     }, [order])
     
+    //objeto creado para simplificar la ejecucion de funciones y variables
     const hacer = []
     
   
+    fire.updateCollectionDoc = (array) => {
+      let fire = dat.collection("prod")
+       array.forEach(item =>{
+          fire.doc(item.id).update({"stock": (item.stock - item.cantidad) }) 
+           
+            .catch( error  => {console.error ("Error updating document: "   , error    ) })
+       
+          }
+        )
+  }
+    console.log(idProd)
+    
+ 
+
     hacer.handleCompra = () => {
       if (mail != null) {
         eliminaRegistro? setEliminaRegistro(false) : setEliminaRegistro(true);
@@ -45,11 +61,12 @@ export const CartProd = ({children}) => {
       total,
       
     }
-    idProd.length && setOrder(order)
     
+    fire.updateCollectionDoc(idProd)
+    idProd.length && setOrder(order) 
     } else {
       hacer.setCondicion(true)    
-    }
+      }
     }
     
     hacer.condicion = condicion
@@ -62,45 +79,35 @@ export const CartProd = ({children}) => {
     hacer.setTotal = setTotal
     hacer.unit = unit
     hacer.setUnit = setUnit
-
+    
+    //agrega unidades del cart
     hacer.agregar = (x) =>  idProd.find(i => ( i.id == x ) && ( i.cantidad += 1) ) 
                           && setIdProd ([...idProd])
-
+    //resta unidades del cart
     hacer.borrar = (x) =>  idProd.find(i => ( i.id == x ) && (i.cantidad > 0) ?  ( i.cantidad -= 1) : hacer.eliminar(x)) 
                           && setIdProd([...idProd]) 
-
-       
+    //elimina items del cart
     hacer.eliminar = (item) => { const restantes = idProd.filter(x=> x.id !== item);
       setIdProd(restantes);
     }
-    
+    //vacia carrito
     hacer.vaciar = () =>setIdProd([])
     
-
+    //calculo de cantidad de unidades en el carrito
     useEffect(() => {
       const unid = idProd.reduce((a,b)=>(a + b.cantidad),0)
-      setUnit(unid)
-      
-    }, [idProd])
-
-
-    useEffect(() => {
-  
+      setUnit(unid) 
       const Total = idProd.reduce((a,b)=>(a + (b.price * b.cantidad)),0)
-      setTotal(Total)
-      
+      setTotal(Total) 
     }, [idProd])
+    
+ 
     
     useEffect(() => {
       firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-          fire.setMail(user.email)
-
-        } else {
-          fire.setMail(null)
-        }
-      });
-      
+        setMail(user? user.email : null)
+       }
+      ); 
     }, [fire.setMail])
     
   return (
@@ -109,3 +116,25 @@ export const CartProd = ({children}) => {
     </ CartContext.Provider>
   )
 }
+
+
+/*
+
+fire.updateCollectionDoc = (collectionName, doc, values) => {
+  db.collection("orders")
+    .doc(doc)
+    .update(values)
+    .catch( error  => {console.error ("Error updating document: "   , error    ) })
+}
+
+
+
+task.updateItemStock = (item) => {
+
+
+		fire.updateCollectionDoc("items",item.id,{stock:item.stock-item.cantidad})
+
+
+
+*/
+

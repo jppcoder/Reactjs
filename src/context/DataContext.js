@@ -11,7 +11,7 @@ export const DataProd = ({children}) => {
     const [loading, setLoading] = useState(false);
     const [donde, setDonde] = useState(["price", ">", 1]);
     const [filtConsolas, setFiltConsolas] = useState([])
-    const [estadoInicial, setEstadoInicial] = useState(true)
+    
     const [orderList, setOrderList] = useState([])
     const [mail, setMail] = useState("")
     const [tipo, setTipo] = useState("todo")
@@ -45,14 +45,19 @@ export const DataProd = ({children}) => {
       search.get()
         .then((querySnapShot) => {
           querySnapShot.size === 0 ? console.log("no hay items") : console.log("items en Firebase", (querySnapShot.size))
-          const documentos = querySnapShot.docs.map((doc) =>doc.data());
+          const documentos = querySnapShot.docs.map((doc) => { 
+            return {
+              id2: doc.id,
+              ...doc.data(),
+          }}
+          );      
           setConsolas(documentos)
-          
+          console.log(documentos)
           })
         .catch((err) => console.log("ocurrio un error", err))
         .finally(()=>setLoading(false))
         
-      }, [eliminaRegistro]);
+      }, [eliminaRegistro, donde]);
   
 
       useEffect( () => {
@@ -67,8 +72,7 @@ export const DataProd = ({children}) => {
                 id: doc.id,
                 ...doc.data(),
             }}
-            ); 
-                                   
+            );                      
             setOrderList(ordenes)
             })
           .catch((err) => console.log("ocurrio un error", err))
@@ -80,11 +84,9 @@ export const DataProd = ({children}) => {
         useEffect(() => {
           firebase.auth().onAuthStateChanged(function(user) {
             setMail(user? user.email : null)
-            
-
-          });
-          
-        }, [firebase])
+           }
+          );
+        }, [])
         
 
         fire.delete = (doc, callback) => {
@@ -94,6 +96,8 @@ export const DataProd = ({children}) => {
           
         
       }  
+
+
 
     useEffect ( () => {
      
@@ -112,7 +116,7 @@ export const DataProd = ({children}) => {
           setFiltConsolas(consolas)
       }
       
-    }, [consolas, tipo, estadoInicial])
+    }, [consolas, tipo])
     
  
     

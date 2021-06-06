@@ -1,29 +1,24 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { ShieldShaded } from 'react-bootstrap-icons';
+
+//Context
 import { CartContext }  from '../../context/CartContext'
-import  Cartel  from './Cartel';
+
+//Bootstrap
 import { Button } from 'react-bootstrap'
+
+//imports de componentes
+import  Cartel  from './Cartel';
+
 
 export const Contador = ({stock, id, name, price, img}) => {
   
-  const [value, setValue] = useState(0);
   const [idProd, setIdProd] = useContext(CartContext)
+  const [value, setValue] = useState(0);
   const [tempStock, setTempStock] = useState(stock)
   const [estado, setEstado] = useState(false)
-  const [saldo, setSaldo] = useState("")
   const [showToast, setShowToast] = useState(false)
 
-  function show () {
-    alert(`Agregaste ${value} al carrito`);  
-  }
-  
-  function show2 () {
-    alert(`No hay mas stock`);
-  }
-
   const add = () => {
-    
-
     if (tempStock > 0) {
     setValue(value + 1);
     setTempStock(tempStock - 1);
@@ -38,15 +33,14 @@ export const Contador = ({stock, id, name, price, img}) => {
      if (value > 0) {
       setValue(value - 1);
       setTempStock(tempStock + 1);}
-
   };
 
   const addCart = (x, cantidad) => {
   // show(); muestra el producto agregado
   // si existe el id en el array, uso un ternario para agregar mas stock al id existente
-  idProd.some(i => i.id == id ) ? 
+  idProd.some(i => i.id === id ) ? 
   // localizo el id si es que existe en el array
-    idProd.find(i => ( i.id == id ) && ( i.cantidad += value) ) && setIdProd ([...idProd])
+    idProd.find(i => ( i.id === id ) && ( i.cantidad += value) ) && setIdProd ([...idProd])
     
     : 
   //en caso que no exista previamente, se agrega al array el id de producto y la cantidad
@@ -54,12 +48,10 @@ export const Contador = ({stock, id, name, price, img}) => {
   
   }
   
-  useEffect(() => {
-    
-    
+  useEffect(() => { 
     value > 0 ? setEstado(true) : setEstado(false)
 
-  }, [value, setEstado])
+  }, [value])
 
   return (
     <>  
@@ -73,10 +65,10 @@ export const Contador = ({stock, id, name, price, img}) => {
         +  
         </Button>
         <br></br>
-        <Button disabled={!estado} className="btn btn-warning mt-2" onClick={() => addCart([{id: id, cantidad: value, name: name, price: price, img: img}])}>
+        <Button disabled={!estado} className="btn btn-warning mt-2" onClick={() => addCart([{id: id, cantidad: value, name: name, price: price, img: img, stock: stock}])}>
         Agregar al carrito
         </Button>
-        <h5>{saldo}</h5>
+        
         <Cartel showToast={showToast} setShowToast={setShowToast} texto={"no hay mas stock"}/>
     </>
     );

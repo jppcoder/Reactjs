@@ -3,31 +3,27 @@ import CartWidget from './CartWidget';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import {LinkContainer} from 'react-router-bootstrap'
-import { PersonSquare, TextCenter } from 'react-bootstrap-icons';
+import { Person } from 'react-bootstrap-icons';
 
 import React from 'react'
 
 export default function NavBar() {
     return (
        
-            <Navbar   collapse OnSelect expand="lg"  bg="dark" variant="dark"  >
-                <LinkContainer to="/" exact>
-                    <Navbar.Brand>
-                        <Link to="/" exact><img alt="Consola retro logo" 
-                        
+        <Navbar   collapse OnSelect expand="lg"  bg="dark" variant="dark"  >
+            <LinkContainer to="/" exact>
+                <Navbar.Brand>
+                    <Link to="/" exact><img alt="Consola retro logo"      
                         src="https://image.flaticon.com/icons/png/128/2727/2727202.png"
                         width="30"
                         height="30"
                         className="d-inline-block align-top"/>
-                        </Link>
-                    
+                    </Link>
                         RetroGames
                     </Navbar.Brand>
                 </LinkContainer>
                     
-                  
-                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                        
+                    <Navbar.Toggle aria-controls="responsive-navbar-nav" /> 
                     <Navbar.Collapse id="responsive-navbar-nav "  className="ml-5">
                         <Nav className="detalle productos mr-auto  "> 
                             
@@ -41,18 +37,13 @@ export default function NavBar() {
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item href="#action/3.4">Productos a Medida</NavDropdown.Item>
                             </NavDropdown>
-                        
                         </Nav>
-                       
                     </Navbar.Collapse>
                     <div className="d-flex">
                         <LinkContainer to="/Cart"><CartWidget /></LinkContainer>
-                        <LinkContainer to="/User" className="m-2 mt-2" ><PersonSquare  color="white" size={25}/></LinkContainer>     
+                        <LinkContainer to="/User" className="m-2 mt-2" ><Person  color="white" size={29}/></LinkContainer>     
                     </div>
-
             </Navbar>
- 
-        
     )
 }
 

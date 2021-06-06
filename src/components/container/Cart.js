@@ -13,13 +13,9 @@ export default function Cart() {
     const [idProd, setIdProd, hacer, total, setTotal, unit, setUnit] = useContext(CartContext)
     
     
-    useEffect(() => {
-      
-    }, [hacer.user])
-
    return (
       <> 
-        { unit == 0 ?  
+        { unit === 0 ?  
         
           <Jumbotron  className="container mt-5">
             <h1>Carrito vacio</h1>
@@ -28,7 +24,6 @@ export default function Cart() {
             <LinkContainer to="/"><Button variant="primary">Regresar</Button></LinkContainer>
             </p>
           </Jumbotron>
-          
           : 
           
           <>
@@ -56,6 +51,7 @@ export default function Cart() {
                                 <td>
                                   <button className="btn btn-danger rounded-circle btn-sm" onClick={()=> hacer.eliminar(cart.id)}>X
                                   </button>
+                                 
                                 </td>  
                               </tr>
                 )
@@ -75,6 +71,9 @@ export default function Cart() {
                 <LinkContainer to="/">
                   <button className="btn btn-primary" > Regresar </button>
                 </LinkContainer>
+                <button  className="btn btn-warning mt-2" onClick={hacer.stockReduce}>
+                                 prueba
+                                          </button>
             </div>  
                 <Orders />
           </> 

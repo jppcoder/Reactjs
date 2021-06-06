@@ -1,7 +1,13 @@
 import React, { useContext } from 'react';
-import ItemList from './ItemList';
+
+//Context
 import {DataContext}  from '../../context/DataContext'
+
+//Bootstrap
 import Spinner from 'react-bootstrap/Spinner'
+
+//imports componentes
+import ItemList from './ItemList';
 
 
 function ItemListContainer() {
@@ -9,22 +15,13 @@ function ItemListContainer() {
 	
 	const [filtConsolas, fire, loading, setLoading] = useContext(DataContext);
 
-	const handlerClick = () => {
-		
-	
-	  }
-
-
-
     return ( 
       <>
 	  	{ loading ? <div className="spinner"><Spinner animation="border" className=" v-center" /></div> :
-		<ItemList  array={filtConsolas} handleClick={handlerClick}/>}	
+		<ItemList  array={filtConsolas} />}	
 	  </>
 
     );
 
-    
- 
 }
 export default ItemListContainer;

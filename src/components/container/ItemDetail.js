@@ -1,8 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Card , CardGroup} from 'react-bootstrap';
-import { useParams } from 'react-router';
-import { Contador } from './Contador';
+
+//Context
 import { DataContext }  from '../../context/DataContext'
+import { useParams } from 'react-router';
+
+//Bootstrap
+import { Card , CardGroup} from 'react-bootstrap';
+
+//import de componentes
+import { Contador } from './Contador';
 
 const ItemDetail = ({handleClick}) => {
 
@@ -15,43 +21,33 @@ const ItemDetail = ({handleClick}) => {
     const found = consolas.find(element => element.id == id);
     setFilter(found)
     
-    
   }, [consolas, id])
     
     
     return ( 
       <>
-        
+        <div className="container mt-5">
+          <CardGroup >
+            <Card className="text-white border-0">
+            <Card.Img variant="left" src={filter.img} style={{objectFit:'cover'}} />
+              <Card.ImgOverlay>
+                           
+                <Card.Text text='dark'>Last updated 3 mins ago</Card.Text>
+              </Card.ImgOverlay>
+            </Card>
+            <Card style={{ width: '18rem'}} className="border-0">
+            <Card.Body>
+            <Card.Title>{filter.name}</Card.Title>
+              <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
+              <Card.Text className="text-left">${filter.desc}</Card.Text>
+              <Card.Text>${filter.price},00</Card.Text>
+            </Card.Body>
+              <Card.Footer>
 
-         <div className="container">
-        
-        <CardGroup>
-  <Card className="bg-dark text-white">
-  <Card.Img variant="left" src={filter.img} style={{objectFit:'cover'}} />
-    <Card.ImgOverlay>
-      <Card.Title>Card title</Card.Title>
-      <Card.Text>
-        This is a wider card with supporting text below as a natural lead-in to
-        additional content. This content is a little bit longer.
-      </Card.Text>
-      <Card.Text>Last updated 3 mins ago</Card.Text>
-    </Card.ImgOverlay>
-  </Card>
-  <Card style={{ width: '18rem' }}>
-  <Card.Body>
-    <Card.Title>Card Title</Card.Title>
-    <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-    <Card.Text>
-      Some quick example text to build on the card title and make up the bulk of
-      the card's content.
-    </Card.Text>
-  </Card.Body>
-    <Card.Footer>
-
-    <Contador id={filter.id} key={filter.key} name={filter.name} img={filter.img} price={filter.price}  stock={filter.stock}/>
-    </Card.Footer>
-</Card> 
-</CardGroup>
+              <Contador id={filter.id} key={filter.key} name={filter.name} img={filter.img} price={filter.price}  stock={filter.stock}/>
+              </Card.Footer>
+          </Card> 
+          </CardGroup>
 
         </div> 
       </> 
