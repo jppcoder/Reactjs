@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/Table'
 import {LinkContainer} from 'react-router-bootstrap'
 import { Jumbotron, Button } from 'react-bootstrap'
 import { DataContext } from '../../context/DataContext'
-import { getDefaultNormalizer } from '@testing-library/dom'
+import {Accordion, Card} from 'react-bootstrap'
 
 
 
@@ -24,38 +24,65 @@ export default function Orders(comprador) {
 
    return (
       <> 
-        { 
-
-            <Table striped bordered hover sm className="mt-5">
-              <thead> 
-                <tr>
-                  <th>Orden ID</th>
-                  <th>Nombre</th>
-                  <th>Precio</th>
-                  <th>Eliminar</th>
-                </tr>
-              </thead>
+        <Accordion defaultActiveKey="0">
+         
+              <Table striped bordered hover sm className="mt-5"> 
+                <thead> 
+                 <tr>
+                    <th>Orden ID</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Eliminar</th>
+                 </tr>
+                </thead>
               <tbody>
+
+              {orderList.map(order =>
+                <> 
                 
-                 {orderList.map(order =>
                               <tr key={order.id}>
                                 <td>{order.id}</td>                               
-                                
-                                <td>{order.idProd.map(element => {  
-                                    return (
-                                    <span>{element.name}</span>
-                                    )})}
-                                </td>
                                 <td>{order.total}</td>
-                                 
+                                <td> <Accordion.Toggle as={Button} eventKey={order.id}> ver </Accordion.Toggle></td>
                                 <td><Button onClick={()=>fire.delete(order.id)}>X</Button></td>
-                              </tr>
-                )
-                }     
+                              </tr> 
+                              
                 
+                              
+               <tr>
+                 <td colSpan="4"> 
+              <Accordion.Collapse eventKey={order.id}>
+                
+                <Table striped bordered hover className="mt-0">
+                  <thead> 
+                    <tr>
+                      <th>Item ID</th>
+                      <th>Nombre</th>
+                      <th>Precio</th>
+                      
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                  {order.idProd.map(element => <tr>  
+                                              <td>{element.id}</td>
+                                              <td>{element.name}</td>
+                                              <td>{element.price}</td>
+                                              </tr>  )}
+                  </tbody>
+                  </Table>
+                  
+              </Accordion.Collapse>
+              </td>      
+              </tr> 
+             </> 
+             )}
               </tbody>
-            </Table>
-        }
+            </Table>              
+              
+         
+          </Accordion>
+        
       </> 
     ) 
 }

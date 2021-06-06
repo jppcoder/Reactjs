@@ -14,7 +14,7 @@ const Item = ({name,price,img,id,stock, key}) => {
         
           
           <Card style={{ minWidth: '22em', height:'35rem' }} key={key}>
-            <Card.Img variant="top" src={img} style={{ maxHeight:'15rem' }} />
+            <Card.Img variant="top" src={img} style={{objectFit:'scale-down', maxHeight:'15rem' }} />
             <Card.Body>
               <Card.Title>{name}</Card.Title>
               <Card.Text mb-3 >${price},00</Card.Text>

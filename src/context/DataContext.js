@@ -47,7 +47,7 @@ export const DataProd = ({children}) => {
           querySnapShot.size === 0 ? console.log("no hay items") : console.log("items en Firebase", (querySnapShot.size))
           const documentos = querySnapShot.docs.map((doc) =>doc.data());
           setConsolas(documentos)
-          console.log(typeof documentos)
+          
           })
         .catch((err) => console.log("ocurrio un error", err))
         .finally(()=>setLoading(false))
@@ -79,25 +79,20 @@ export const DataProd = ({children}) => {
 
         useEffect(() => {
           firebase.auth().onAuthStateChanged(function(user) {
-            if (user) {
-              setMail(user.email)
-              
-  
-            } else {
-             
-              setMail(null)
-            }
+            setMail(user? user.email : null)
+            
+
           });
           
         }, [firebase])
         
 
         fire.delete = (doc, callback) => {
-          eliminaRegistro? setEliminaRegistro(false) : setEliminaRegistro(true);
+           setEliminaRegistro (eliminaRegistro? false : true );
           const db = getFirestore();
           db.collection("orders").doc(doc).delete();
           
-          console.log(eliminaRegistro)
+        
       }  
 
     useEffect ( () => {
