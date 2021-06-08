@@ -1,26 +1,40 @@
-import React, {useContext } from 'react'
+import React, {useContext} from 'react'
 import { CartContext }  from '../../context/CartContext'
-import Table from 'react-bootstrap/Table'
-import {LinkContainer} from 'react-router-bootstrap'
-import { Jumbotron, Button } from 'react-bootstrap'
-import Cartel from './Cartel'
-import User from '../User/User'
+//import
+import { Row, Col, Toast } from 'react-bootstrap';
 
 
-
-export default function Exit() {
-
-    const [idProd, setIdProd, hacer, total, setTotal, unit, setUnit] = useContext(CartContext)
-    
-    
-    
-
-   return (
-        <>
-            <User />
-        </>
-
-   )
-
+const Exit = ({showToast, setShowToast, texto}) => {
+  const [idProd, setIdProd, hacer, total, setTotal, unit, setUnit] = useContext(CartContext)
+  
+  const dotwo = () => {
+      setShowToast(false)
+      hacer.vaciar()
+  }
+  return (
+    <Row >
+      <Col xs={6}>
+        <Toast style={{
+                    position: 'absolute',
+                    top: -150,
+                    right: -150,
+                      }} onClose={dotwo} show={showToast} >
+          <Toast.Header>
+            <img
+              src="holder.js/20x20?text=%20"
+              className="rounded mr-2"
+              alt=""
+            />
+            <strong className="mr-auto">Atencion</strong>
+            
+          </Toast.Header>
+          <Toast.Body>{texto}</Toast.Body>
+        </Toast>
+      </Col>
+      
+    </Row>
+  );
 }
-export default Exit;
+
+  
+  export default Exit;

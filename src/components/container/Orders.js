@@ -9,19 +9,20 @@ import {Accordion, Button, Table } from 'react-bootstrap'
 
 export default function Orders(comprador) {
 
-    const [idProd, setIdProd, hacer, total, setTotal, unit, setUnit] = useContext(CartContext)
+    const [idProd, setIdProd, hacer, total, setTotal, unit, setUnit, showToast, setShowToast] = useContext(CartContext)
     const [filtConsolas, fire, loading, setLoading, orderList, setOrderList] = useContext(DataContext)
   
     return (
       <> 
+        
         <Accordion defaultActiveKey="0">
          
           <Table striped bordered hover sm className="mt-5"> 
             <thead> 
               <tr>
                 <th>Orden ID</th>
-                <th>Nombre</th>
-                <th>Precio</th>
+                <th>Total</th>
+                <th>Detalle</th>
                 <th>Eliminar</th>
               </tr>
             </thead>
@@ -32,7 +33,7 @@ export default function Orders(comprador) {
                 <tr key={order.id}>
                   <td>{order.id}</td>                               
                   <td>{order.total}</td>
-                  <td> <Accordion.Toggle as={Button} eventKey={order.id}> ver </Accordion.Toggle></td>
+                  <td> <Accordion.Toggle as={Button} eventKey={order.id}> Ver </Accordion.Toggle></td>
                   <td><Button onClick={()=>fire.delete(order.id)}>X</Button></td>
                </tr>               
                <tr>

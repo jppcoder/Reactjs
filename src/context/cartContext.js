@@ -34,7 +34,20 @@ export const CartProd = ({children}) => {
     //objeto creado para simplificar la ejecucion de funciones y variables
     const hacer = []
     
-  
+    fire.batchUpdate = (array) => {
+      let batch = dat.batch();
+       array.forEach(item =>{
+          batch.update(dat.collection("prod").doc(item.id), 
+                {stock:firebase.firestore.FieldValue.increment(-item.cantidad)} 
+          );
+           
+       
+          })
+        batch.commit()
+         .then((res)=> console.log("Error en batch", res))
+
+    }
+
     fire.updateCollectionDoc = (array) => {
       let fire = dat.collection("prod")
        array.forEach(item =>{
@@ -44,7 +57,7 @@ export const CartProd = ({children}) => {
        
           }
         )
-  }
+    }
     console.log(idProd)
     
  
@@ -62,13 +75,16 @@ export const CartProd = ({children}) => {
       
     }
     
-    fire.updateCollectionDoc(idProd)
+    fire.batchUpdate(idProd)
     idProd.length && setOrder(order) 
+    hacer.vaciar()
     } else {
       hacer.setCondicion(true)    
       }
     }
     
+
+
     hacer.condicion = condicion
     hacer.setCondicion = setCondicion
     hacer.user = user
@@ -117,24 +133,4 @@ export const CartProd = ({children}) => {
   )
 }
 
-
-/*
-
-fire.updateCollectionDoc = (collectionName, doc, values) => {
-  db.collection("orders")
-    .doc(doc)
-    .update(values)
-    .catch( error  => {console.error ("Error updating document: "   , error    ) })
-}
-
-
-
-task.updateItemStock = (item) => {
-
-
-		fire.updateCollectionDoc("items",item.id,{stock:item.stock-item.cantidad})
-
-
-
-*/
 

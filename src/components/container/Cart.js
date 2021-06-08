@@ -1,9 +1,11 @@
-import React, {useContext, useEffect } from 'react'
+import React, {useContext, useState } from 'react'
 import { CartContext }  from '../../context/CartContext'
 import Table from 'react-bootstrap/Table'
 import {LinkContainer} from 'react-router-bootstrap'
 import { Jumbotron, Button } from 'react-bootstrap'
 import Orders from './Orders'
+
+import Exit from './Exit'
 
 
 
@@ -11,10 +13,11 @@ import Orders from './Orders'
 export default function Cart() {
 
     const [idProd, setIdProd, hacer, total, setTotal, unit, setUnit] = useContext(CartContext)
-    
+    const [showToast, setShowToast] = useState(false)
     
    return (
       <> 
+        
         { unit === 0 ?  
         
           <Jumbotron  className="container mt-5">
@@ -67,15 +70,17 @@ export default function Cart() {
                 { hacer.user == null ? <LinkContainer to="User">
                   <button className="btn btn-success" > LogIn / Registrarse </button>
                 </LinkContainer> : 
-                <button className="btn btn-success" onClick={hacer.handleCompra}> Finalizar Pedido </button>}
+                <button className="btn btn-success" onClick={()=> hacer.handleCompra && setShowToast(true)}> Finalizar Pedido </button>}
                 <LinkContainer to="/">
                   <button className="btn btn-primary" > Regresar </button>
                 </LinkContainer>
                 <button  className="btn btn-warning mt-2" onClick={hacer.stockReduce}>
                                  prueba
                                           </button>
+                                          <button onClick={()=>setShowToast(true)} > toast </button>
             </div>  
                 <Orders />
+                <Exit showToast={showToast} setShowToast={setShowToast} texto={"Realizo su compra correctamente"}  />
           </> 
         }
       </> 

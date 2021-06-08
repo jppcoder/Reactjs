@@ -27,7 +27,7 @@ function App() {
     <DataProd>
       
         <CartProd>
-        <div className="App">
+        <div className="App ">
           <header className="App-header">
             <BrowserRouter> 
               
