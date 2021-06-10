@@ -9,7 +9,7 @@ import app from '../../firebase';
 
 const Signup = () => {
     
-    const [idProd, setIdProd, hacer, total, setTotal, unit, setUnit] = useContext(CartContext)
+    const [hacer] = useContext(CartContext)
 
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
