@@ -11,7 +11,6 @@ export const DataProd = ({children}) => {
     const [loading, setLoading] = useState(false);
     const [donde, setDonde] = useState(["price", ">", 1]);
     const [filtConsolas, setFiltConsolas] = useState([])
-    
     const [orderList, setOrderList] = useState([])
     const [mail, setMail] = useState("")
     const [tipo, setTipo] = useState("todo")
@@ -52,7 +51,6 @@ export const DataProd = ({children}) => {
           }}
           );      
           setConsolas(documentos)
-          console.log(documentos)
           })
         .catch((err) => console.log("ocurrio un error", err))
         .finally(()=>setLoading(false))
@@ -93,8 +91,7 @@ export const DataProd = ({children}) => {
            setEliminaRegistro (eliminaRegistro? false : true );
           const db = getFirestore();
           db.collection("orders").doc(doc).delete();
-          
-        
+           
       }  
 
 
@@ -121,7 +118,7 @@ export const DataProd = ({children}) => {
  
     
   return (
-    <DataContext.Provider value={[filtConsolas, fire, loading, setLoading, orderList, setOrderList, mail, setMail, eliminaRegistro, setEliminaRegistro]}>
+    <DataContext.Provider value={[filtConsolas, fire, loading, setLoading, orderList, setOrderList, mail, setMail, eliminaRegistro, setEliminaRegistro, donde, setDonde]}>
       {children}
     </ DataContext.Provider>
   )

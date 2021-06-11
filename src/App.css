@@ -1,3 +1,18 @@
+*, *::before, *::after {
+  box-sizing: border-box; }
+
+html, body {
+  width: auto !important;
+  overflow-x: hidden !important;
+  -ms-overflow-style: none;
+  /* IE */
+  scrollbar-width: none;
+  /* Firefox */ }
+  html::-webkit-scrollbar, body::-webkit-scrollbar {
+    display: none;
+    /* Chrome */ }
+
+
 .App {
   text-align: center;
   margin: 0px;
@@ -62,9 +77,15 @@ a {
   justify-content: center;
   min-height: 60vh;
 }
+td, th { font-size: 1.3em;}
 
 .light { background-color: #f8f9fa;}
 
 .second { background-color: #6c757d;}
 
 .bgdark { background-color: #1d1f20;}
+
+@media (max-width: 380px) {
+td, th { font-size: 0.9em;}
+
+}

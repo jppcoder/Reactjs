@@ -1,7 +1,7 @@
 import React, {useContext} from 'react'
 import { CartContext }  from '../../context/CartContext'
 //import
-import { Row, Col, Toast } from 'react-bootstrap';
+import { Row, Col, Toast, Modal, Button  } from 'react-bootstrap';
 
 
 const Exit = ({showToast, setShowToast, texto}) => {
@@ -12,27 +12,24 @@ const Exit = ({showToast, setShowToast, texto}) => {
       hacer.vaciar()
   }
   return (
-    <Row >
-      <Col xs={6}>
-        <Toast style={{
-                    position: 'absolute',
-                    top: -150,
-                    right: -150,
-                      }} onClose={dotwo} show={showToast} >
-          <Toast.Header>
-            <img
-              src="holder.js/20x20?text=%20"
-              className="rounded mr-2"
-              alt=""
-            />
-            <strong className="mr-auto">Atencion</strong>
-            
-          </Toast.Header>
-          <Toast.Body>{texto}</Toast.Body>
-        </Toast>
-      </Col>
-      
-    </Row>
+    <>
+    
+    
+   
+    <Modal show={showToast}>
+        <Modal.Header closeButton onClose={dotwo} >
+          <Modal.Title>Felicitaciones !!!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{texto}</Modal.Body>
+        <Modal.Footer>
+          <Button variant="warning" onClick={dotwo} >
+            Cerrar
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    
+
+    </>
   );
 }
 

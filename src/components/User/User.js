@@ -5,8 +5,9 @@ import { CartContext }  from '../../context/CartContext'
 import { DataContext }  from '../../context/DataContext'
 
 //bootstrap
-import {  Button, Nav, Tab, Tabs } from 'react-bootstrap'
-import {LinkContainer} from 'react-router-bootstrap'
+import {  Button, Tab, Tabs } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
+import {  ArrowLeftCircleFill } from 'react-bootstrap-icons';
 
 //imports componentes
 import app from '../../firebase';
@@ -29,10 +30,14 @@ const User = () => {
         hacer.setCondicion(false);
        
     }
-    
+     console.log(orderList)
     return (  
         <> 
-            <div className="container mt-5 rounded p-3" style={{ maxWidth: '35em', backgroundColor:"#f8f9fa" }} >
+            <LinkContainer to="/">
+                <ArrowLeftCircleFill className="d-flex mt-3 ml-3" size={30}/>
+            </LinkContainer>  
+            
+            <div className="container mt-5 rounded p-3" style={{ maxWidth: '40em', backgroundColor:"#f8f9fa" }} >
             { mail? 
             
             <>
@@ -40,10 +45,7 @@ const User = () => {
                 <Button variant="danger" type="button" className="m-3" onClick={logout}>
                     Sign Out
                 </Button> 
-                
-                <LinkContainer to="/">
-                    <Button variant="primary" className=" m-3" > Regresar </Button>
-                </LinkContainer>
+            
             </>
             : 
             <Tabs defaultActiveKey="Signup" transition={false} id="noanim-tab-example" >
@@ -56,8 +58,10 @@ const User = () => {
                
             </Tabs>    
             }
-            <Orders  />
+            
             </div>
+            { orderList.length?   <Orders  /> : <></> 
+            }
         </>    
     );
 }

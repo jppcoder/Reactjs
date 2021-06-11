@@ -25,7 +25,7 @@ const CartWidget = () => {
   return (  
       <>
       <div>
-      <LinkContainer to="/Cart"><Cart className="mt-2" color="white" size={26}/></LinkContainer>
+      <LinkContainer to="/Cart"><Cart  color="white" size={26}/></LinkContainer>
         {/* <Link to="/Cart"><img  src="https://res.cloudinary.com/dhngiwzze/image/upload/v1621891195/cart_auc1pl.png" style={{ maxWidth:'30px', maxHeight:'30px' }} ></img></Link> */}
         
 		  <Badge pill variant="warning" className={estado}>

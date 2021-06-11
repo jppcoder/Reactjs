@@ -6,14 +6,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 //componentes
 import ItemListContainer from './components/container/ItemListContainer';
 import NavBar from './components/NavBar/NavBar';
-import Historia from './components/container/Historia';
-import Nosotros from './components/container/Nosotros';
+import Garantia from './components/container/Garantia';
 import Cart from './components/container/Cart';
 import User from './components/User/User';
+import Comprar from './components/container/Comprar';
 
 //context
 import { CartProd } from './context/CartContext';
 import { DataProd } from './context/DataContext';
+
 
 //useContext
 
@@ -33,8 +34,8 @@ function App() {
               
                   <NavBar />         
                   <Switch>
-                    <Route path='/Historia' exact component={Historia} />
-                    <Route path='/Nosotros' exact component={Nosotros} /> 
+                    <Route path='/Comprar' exact component={Comprar} />
+                    <Route path='/Garantia' exact component={Garantia} /> 
                     <Route path='/User' exact component={User} />
                     <Route path='/Cart' exact component={Cart} />
                     <Route path='/' exact component={ItemListContainer} />   

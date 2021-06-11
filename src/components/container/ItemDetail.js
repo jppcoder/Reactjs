@@ -5,7 +5,8 @@ import { DataContext }  from '../../context/DataContext'
 import { useParams } from 'react-router';
 
 //Bootstrap
-import { Card , CardGroup} from 'react-bootstrap';
+import { Card , CardGroup, Button} from 'react-bootstrap';
+import {LinkContainer} from 'react-router-bootstrap'
 
 //import de componentes
 import { Contador } from './Contador';
@@ -19,7 +20,6 @@ const ItemDetail = ({handleClick}) => {
   useEffect(() => {
     
     const found = consolas.find(element => element.id2 == id);
-    console.log("found", found)
     setFilter(found)
     
   }, [consolas, id])
@@ -40,6 +40,7 @@ const ItemDetail = ({handleClick}) => {
               </Card.Body>
               <Card.Footer>
                 <Contador id={filter.id} key={filter.key} name={filter.name} img={filter.img} price={filter.price}  stock={filter.stock}/>
+                <LinkContainer to="/"><Button variant="primary">Regresar</Button></LinkContainer>
               </Card.Footer>
             </Card> 
           </CardGroup>
@@ -47,23 +48,6 @@ const ItemDetail = ({handleClick}) => {
       </> 
     );
 }
-
-
-
-
-
 export default ItemDetail;
 
 
-{/* <Card>
-<Card.Img variant="left" src={filter.img} style={{ maxWidth:'400px' }} />
-<Card.Body>
-  <Card.Title>{filter.name}</Card.Title>
-  <Card.Text>${filter.price},00</Card.Text>
-  <Card.Text>${filter.desc}</Card.Text>
-  <Contador id={filter.id} key={filter.key} name={filter.name} img={filter.img} price={filter.price}  stock={filter.stock}/>
-  </Card.Body>             
-  <Card.Footer>
-    </Card.Footer>
-</Card>  
- */}

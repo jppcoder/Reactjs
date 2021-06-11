@@ -6,12 +6,13 @@ import firebase from 'firebase/app';
 
 //context
 import { DataContext } from './DataContext';
+import { set } from 'react-hook-form';
 
 
 export const CartContext = React.createContext([])
 export const CartProd = ({children}) => {
 
-    const [filtConsolas, fire, loading, setLoading, orderList, setOrderList, mail, setMail, eliminaRegistro, setEliminaRegistro] = useContext(DataContext)
+    const [filtConsolas, fire, loading, setLoading, orderList, setOrderList, mail, setMail, eliminaRegistro, setEliminaRegistro, donde, setDonde] = useContext(DataContext)
     const [idProd, setIdProd] = useState([]);
     const [total, setTotal] = useState([]);
     const [unit, setUnit] = useState([]);
@@ -20,10 +21,10 @@ export const CartProd = ({children}) => {
     const [user, setUser] = useState({});    
     const dat = getFirestore();
     const orders = dat.collection("orders");
-    
+    const [showToast, setShowToast] = useState(false)
+
     useEffect(() => {
-     
-      if (order.idProd) {
+      if (order.idProd) { 
         orders.add(order)
           .then((id)=>{console.log("id", id)
           })
@@ -31,8 +32,7 @@ export const CartProd = ({children}) => {
       }
     }, [order])
     
-    //objeto creado para simplificar la ejecucion de funciones y variables
-    const hacer = []
+    
     
     fire.batchUpdate = (array) => {
       let batch = dat.batch();
@@ -40,51 +40,44 @@ export const CartProd = ({children}) => {
           batch.update(dat.collection("prod").doc(item.id), 
                 {stock:firebase.firestore.FieldValue.increment(-item.cantidad)} 
           );
-           
-       
           })
-        batch.commit()
-         .then((res)=> console.log("Error en batch", res))
-
+          batch.commit()
+          .then((res)=> setDonde(["price", ">", 1]))
+          .catch((err)=> console.log("catch", err))
+          .finally(()=> setShowToast(true))
     }
 
     fire.updateCollectionDoc = (array) => {
       let fire = dat.collection("prod")
        array.forEach(item =>{
           fire.doc(item.id).update({"stock": (item.stock - item.cantidad) }) 
-           
-            .catch( error  => {console.error ("Error updating document: "   , error    ) })
+           .catch( error  => {console.error ("Error updating document: "   , error    ) })
        
           }
         )
     }
-    console.log(idProd)
     
- 
+    
+    //objeto creado para simplificar la ejecucion de funciones y variables
+    const hacer = []
 
     hacer.handleCompra = () => {
-      if (mail != null) {
-        eliminaRegistro? setEliminaRegistro(false) : setEliminaRegistro(true);
+      if (mail != null) { eliminaRegistro? setEliminaRegistro(false) : setEliminaRegistro(true);
         let order = {
         buyer: {
           email: mail,
         }, 
-      fecha: firebase.firestore.Timestamp.fromDate(new Date()),  
-      idProd, 
-      total,
-      
+        fecha: firebase.firestore.Timestamp.fromDate(new Date()),  
+        idProd, 
+        total,  
     }
-    
-    fire.batchUpdate(idProd)
     idProd.length && setOrder(order) 
-    hacer.vaciar()
-    } else {
-      hacer.setCondicion(true)    
-      }
+    fire.batchUpdate(idProd)
+    
+  
+    } else {hacer.setCondicion(true)}
     }
     
-
-
     hacer.condicion = condicion
     hacer.setCondicion = setCondicion
     hacer.user = user
@@ -97,10 +90,10 @@ export const CartProd = ({children}) => {
     hacer.setUnit = setUnit
     
     //agrega unidades del cart
-    hacer.agregar = (x) =>  idProd.find(i => ( i.id == x ) && ( i.cantidad += 1) ) 
+    hacer.agregar = (x) =>  idProd.find(i => ( i.id === x ) && ( i.cantidad += 1) ) 
                           && setIdProd ([...idProd])
     //resta unidades del cart
-    hacer.borrar = (x) =>  idProd.find(i => ( i.id == x ) && (i.cantidad > 0) ?  ( i.cantidad -= 1) : hacer.eliminar(x)) 
+    hacer.borrar = (x) =>  idProd.find(i => ( i.id === x ) && (i.cantidad > 0) ?  ( i.cantidad -= 1) : hacer.eliminar(x)) 
                           && setIdProd([...idProd]) 
     //elimina items del cart
     hacer.eliminar = (item) => { const restantes = idProd.filter(x=> x.id !== item);
@@ -127,7 +120,7 @@ export const CartProd = ({children}) => {
     }, [fire.setMail])
     
   return (
-    <CartContext.Provider value={[idProd, setIdProd, hacer, total, setTotal, unit, setUnit]}>
+    <CartContext.Provider value={[idProd, setIdProd, hacer, total, setTotal, unit, setUnit, showToast, setShowToast, user, setUser]}>
       {children}
     </ CartContext.Provider>
   )

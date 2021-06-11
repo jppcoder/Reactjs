@@ -5,6 +5,7 @@ import { CartContext }  from '../../context/CartContext'
 
 //Bootstrap
 import { Button } from 'react-bootstrap'
+import { PlusCircle, DashCircle } from 'react-bootstrap-icons';
 
 //imports de componentes
 import  Cartel  from './Cartel';
@@ -56,16 +57,12 @@ export const Contador = ({stock, id, name, price, img}) => {
   return (
     <>  
         <p>Stock: {tempStock}</p>
-
-        <Button className="btn btn-primary"  onClick={remove}>
-        -   
-        </Button>
+        <DashCircle onClick={remove} size={28}/>
+       
         <span className="m-2">   {value}    </span>
-         <Button onClick={add} className="btn btn-danger">
-        +  
-        </Button>
+        <PlusCircle onClick={add} size={28} /> 
         <br></br>
-        <Button disabled={!estado} className="btn btn-warning mt-2" onClick={() => addCart([{id: id, cantidad: value, name: name, price: price, img: img, stock: stock}])}>
+        <Button disabled={!estado} className="btn btn-warning mt-2 " onClick={() => addCart([{id: id, cantidad: value, name: name, price: price, img: img, stock: stock}])}>
         Agregar al carrito
         </Button>
         
