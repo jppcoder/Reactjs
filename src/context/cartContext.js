@@ -22,6 +22,19 @@ export const CartProd = ({children}) => {
     const dat = getFirestore();
     const orders = dat.collection("orders");
     const [showToast, setShowToast] = useState(false)
+    const [width, setWidth] = React.useState(window.innerWidth);
+    const [height, setHeight] = React.useState(window.innerHeight);
+  
+    const handleWindowResize = () => {
+      setWidth(window.innerWidth);
+      setHeight(window.innerHeight);
+    }
+    React.useEffect(() => {
+      window.addEventListener("resize", handleWindowResize);
+      return () => window.removeEventListener("resize", handleWindowResize);
+    }, []);
+    console.log(width)
+    console.log(height)
 
     useEffect(() => {
       if (order.idProd) { 
@@ -120,7 +133,7 @@ export const CartProd = ({children}) => {
     }, [fire.setMail])
     
   return (
-    <CartContext.Provider value={[idProd, setIdProd, hacer, total, setTotal, unit, setUnit, showToast, setShowToast, user, setUser]}>
+    <CartContext.Provider value={[idProd, setIdProd, hacer, total, setTotal, unit, setUnit, showToast, setShowToast, user, setUser, width, height]}>
       {children}
     </ CartContext.Provider>
   )

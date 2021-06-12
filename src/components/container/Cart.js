@@ -28,16 +28,15 @@ export default function Cart() {
           <Jumbotron  className="container mt-5">
             <h1>Carrito vacio</h1>
               
-            <p>
-            <LinkContainer to="/"><Button variant="warning">Regresar</Button></LinkContainer>
-            </p>
+            
+             <LinkContainer to="/"><Button variant="warning">Regresar</Button></LinkContainer>
+            
           </Jumbotron>
           : 
-          
           <>
             <LinkContainer to="/">
-                <ArrowLeftCircleFill className="d-flex mt-3 ml-3" size={30}/>
-              </LinkContainer> 
+              <ArrowLeftCircleFill className="d-flex mt-3 ml-3" size={30}/>
+            </LinkContainer> 
             <Table striped  hover size="sm" className="mt-3">
               <thead>
                 <tr>
@@ -76,12 +75,11 @@ export default function Cart() {
               
                 <h5>Unidades: {hacer.unit}</h5>
                 <h5>Total: {hacer.total} </h5>
-                <button className="btn btn-danger" onClick={hacer.vaciar}> Vaciar Carrito </button>
-                
+                <button className="btn btn-secondary" onClick={hacer.vaciar}> Vaciar </button>
                 { hacer.user == null ? <LinkContainer to="User">
                   <button className="btn btn-success" > LogIn / Registrarse </button>
                 </LinkContainer> : 
-                <button className="btn btn-success" onClick={hacer.handleCompra}> Finalizar Pedido </button>}
+                <button className="btn btn-success" onClick={hacer.handleCompra}> Terminar compra </button>}
                                        
             </div>
               <Exit showToast={showToast} setShowToast={setShowToast} texto={"Realizo su compra correctamente"} />

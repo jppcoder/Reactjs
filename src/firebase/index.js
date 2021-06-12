@@ -3,7 +3,7 @@ import 'firebase/firestore';
 import 'firebase/auth';
 
 const app = firebase.initializeApp({
-    apiKey: "AIzaSyDCF5B8HY6UFYtGYbyhTe0Qyjr4kRTjOjw",
+    apiKey: process.env.REACT_APP_API_KEY,
     authDomain: "react-c0f89.firebaseapp.com",
     projectId: "react-c0f89",
     storageBucket: "react-c0f89.appspot.com",

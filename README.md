@@ -1,70 +1,47 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Ecommerce de Consolas Arcade
 
-## Available Scripts
+## Realizado en React JS, con los conocimientos adquiridos en el curso de CoderHouse, apoyandome en otras herramientas y cursos online, logue hacer esta webApp Responsive, con manejo de usuarios, ordenes de pedidos, y stock de mercaderia alojado en Firebase
 
-In the project directory, you can run:
 
-### `npm start`
+Este proyecto fue creado con: [Create React App](https://github.com/facebook/create-react-app).
+Utilizando la libreria Bootstrap para el entorno visual
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Deploy de prueba en Firebase hosting
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+https://react-deploy-31dab.web.app/
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Luego de realizar la descarga del proyecto debe inicializar el mismo utilizando:
 
-### `npm run build`
+## Pasos para la instalacion:
+### Descargar proyecto de github con GitClone
+### instalar NPM 
+### ejecutar `npm start` en la carpeta del proyecto
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+El puerto utilizado para el servidor local por defecto es el 3000
+Abrir [http://localhost:3000](http://localhost:3000) para ver en un navegador.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Descripcion del E-commerce:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Es un sitio simple, compacto, con una navegacion intuitiva.
+Comienza al cargar el html directamente en los productos, con una barra que permite realizar distintos filtros en la base de datos, cada producto tiene la posibilidad de acceder a una informacion mas detallada.
+Luego de seleccionar los productos que nos interesan, podemos dirigirnos al carrito en el cual nos figuraran los items seleccionados, permitiendonos aumentar o disminuir las cantidades, como asi tambien eliminarlo de la lista, una vez conforme al pedido podemos finalizar la compra, para ello previamente debemos realizar un Login de usuario, en caso de no contar con el mismo, la pagina directamente nos permitira crear uno.
+Luego de estar logueado en la pagina podemos proceder a la terminar con la compra.
+Tanto en el area de usuarios, como en el carrito de compra, podemos observar las compras realizadas anteriormente con el detalle de los mismos.
+Tambien se puede acceder a informacion instutucional en las distintas areas de la pagina.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Autor: Juan Pablo Pagotto
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Puedes ver mis otros proyectos de desarollo web
+https://github.com/jppcoder/
 
-## Learn More
+### Herramientas utilizadas:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+https://react-bootstrap.netlify.app/
+https://icons.getbootstrap.com/
+https://code.visualstudio.com/
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

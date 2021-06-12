@@ -35,7 +35,7 @@ const ItemDetail = ({handleClick}) => {
             <Card style={{ width: '18rem'}} className="border-0">
               <Card.Body>
                 <Card.Title>{filter.name}</Card.Title>
-                  <Card.Text className="text-left">${filter.desc}</Card.Text>
+                  <Card.Text className="text-left">{filter.desc}</Card.Text>
                   <Card.Text>${filter.price},00</Card.Text>
               </Card.Body>
               <Card.Footer>
