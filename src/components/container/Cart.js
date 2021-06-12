@@ -66,13 +66,10 @@ export default function Cart() {
                                                                 
                                 </td>  
                               </tr>
-                )
-                }     
+                )}     
               </tbody>
-              
             </Table>
             <div className="tfoot mt-5"> 
-              
                 <h5>Unidades: {hacer.unit}</h5>
                 <h5>Total: {hacer.total} </h5>
                 <button className="btn btn-secondary" onClick={hacer.vaciar}> Vaciar </button>
@@ -80,11 +77,9 @@ export default function Cart() {
                   <button className="btn btn-success" > LogIn / Registrarse </button>
                 </LinkContainer> : 
                 <button className="btn btn-success" onClick={hacer.handleCompra}> Terminar compra </button>}
-                                       
-            </div>
+              </div>
               <Exit showToast={showToast} setShowToast={setShowToast} texto={"Realizo su compra correctamente"} />
               <Orders />
-                
           </> 
         }
       </> 

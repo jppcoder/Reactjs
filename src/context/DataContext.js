@@ -24,8 +24,8 @@ export const DataProd = ({children}) => {
     fire.orderList = orderList
     fire.setOrderList = setOrderList
     fire.mil = () =>  setDonde(["price", ">", 1000])
-    fire.cinco = () =>  setDonde(["price", ">", 5000])
-    fire.diez = () =>  setDonde(["price", ">", 10000])
+    fire.cinco = () =>  setDonde(["price", ">", 20000])
+    fire.diez = () =>  setDonde(["price", ">", 40000])
 
     fire.todos = () =>  setDonde(["price", ">", 1]) 
     fire.ttodos = () => setTipo("todo")
@@ -90,11 +90,8 @@ export const DataProd = ({children}) => {
         fire.delete = (doc, callback) => {
            setEliminaRegistro (eliminaRegistro? false : true );
           const db = getFirestore();
-          db.collection("orders").doc(doc).delete();
-           
+          db.collection("orders").doc(doc).delete();   
       }  
-
-
 
     useEffect ( () => {
      
@@ -112,7 +109,6 @@ export const DataProd = ({children}) => {
       else if ( tipo == "todo") {
           setFiltConsolas(consolas)
       }
-      
     }, [consolas, tipo])
     
  

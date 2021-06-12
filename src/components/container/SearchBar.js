@@ -13,7 +13,7 @@ const SearchBar = () => {
     const [idProd, setIdProd, hacer, total, setTotal, unit, setUnit, showToast, setShowToast, user, setUser, width, height] = useContext(CartContext)
     const [tamaño, setTamaño] = useState("")
     const breakpoint = 620;
-    console.log(tamaño)
+    
     useEffect(() => {
       setTamaño(width < breakpoint ? "sm" : "xl")
     }, [width])
@@ -23,9 +23,9 @@ const SearchBar = () => {
           <div className="container mt-5">
               <ToggleButtonGroup className="m-2" type="radio" name="options" defaultValue={1}  >
                 <ToggleButton variant="outline-secondary" size={tamaño} onClick={fire.todos} value={1}>Todos</ToggleButton>
-                <ToggleButton variant="outline-secondary"  size={tamaño} onClick={fire.mil} value={0}>+1000</ToggleButton>
-                <ToggleButton variant="outline-secondary"  size={tamaño} onClick={fire.cinco} value={2}>+5000</ToggleButton>
-                <ToggleButton variant="outline-secondary"  size={tamaño} onClick={fire.diez} value={3}>+10000</ToggleButton>
+                <ToggleButton variant="outline-secondary"  size={tamaño} onClick={fire.mil} value={0}>+$1.000</ToggleButton>
+                <ToggleButton variant="outline-secondary"  size={tamaño} onClick={fire.cinco} value={2}>+$20.000</ToggleButton>
+                <ToggleButton variant="outline-secondary"  size={tamaño} onClick={fire.diez} value={3}>+$40.000</ToggleButton>
               </ToggleButtonGroup>
                 <ToggleButtonGroup type="radio" name="options">
                 <ToggleButton variant="outline-secondary"  size={tamaño} onClick={fire.ttodos}value={0}>Todos</ToggleButton>

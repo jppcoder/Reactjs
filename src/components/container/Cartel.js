@@ -28,7 +28,6 @@ const Cartel = ({showToast, setShowToast, texto}) => {
           <Toast.Body>{texto}</Toast.Body>
         </Toast>
       </Col>
-      
     </Row>
   );
 }

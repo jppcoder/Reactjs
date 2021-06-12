@@ -33,8 +33,7 @@ export const CartProd = ({children}) => {
       window.addEventListener("resize", handleWindowResize);
       return () => window.removeEventListener("resize", handleWindowResize);
     }, []);
-    console.log(width)
-    console.log(height)
+    
 
     useEffect(() => {
       if (order.idProd) { 
@@ -102,20 +101,19 @@ export const CartProd = ({children}) => {
     hacer.unit = unit
     hacer.setUnit = setUnit
     
-    //agrega unidades del cart
     hacer.agregar = (x) =>  idProd.find(i => ( i.id === x ) && ( i.cantidad += 1) ) 
                           && setIdProd ([...idProd])
-    //resta unidades del cart
+    
     hacer.borrar = (x) =>  idProd.find(i => ( i.id === x ) && (i.cantidad > 0) ?  ( i.cantidad -= 1) : hacer.eliminar(x)) 
                           && setIdProd([...idProd]) 
-    //elimina items del cart
+    
     hacer.eliminar = (item) => { const restantes = idProd.filter(x=> x.id !== item);
       setIdProd(restantes);
     }
-    //vacia carrito
+    
     hacer.vaciar = () =>setIdProd([])
     
-    //calculo de cantidad de unidades en el carrito
+    
     useEffect(() => {
       const unid = idProd.reduce((a,b)=>(a + b.cantidad),0)
       setUnit(unid) 

@@ -13,22 +13,17 @@ const Exit = ({showToast, setShowToast, texto}) => {
   }
   return (
     <>
-    
-    
-   
-    <Modal show={showToast}>
-        <Modal.Header closeButton onClose={dotwo} >
-          <Modal.Title>Felicitaciones !!!</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>{texto}</Modal.Body>
-        <Modal.Footer>
-          <Button variant="warning" onClick={dotwo} >
-            Cerrar
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    
-
+      <Modal show={showToast}>
+          <Modal.Header closeButton onClose={dotwo} >
+            <Modal.Title>Felicitaciones !!!</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>{texto}</Modal.Body>
+          <Modal.Footer>
+            <Button variant="warning" onClick={dotwo} >
+              Cerrar
+            </Button>
+          </Modal.Footer>
+        </Modal>
     </>
   );
 }

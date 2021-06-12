@@ -30,43 +30,38 @@ export const Contador = ({stock, id, name, price, img}) => {
   };
 
   const remove = () => {
-     //value > 0 ? setValue(value - 1) : setValue(value);
      if (value > 0) {
       setValue(value - 1);
       setTempStock(tempStock + 1);}
   };
 
   const addCart = (x, cantidad) => {
-  // show(); muestra el producto agregado
-  // si existe el id en el array, uso un ternario para agregar mas stock al id existente
+  
   idProd.some(i => i.id === id ) ? 
-  // localizo el id si es que existe en el array
-    idProd.find(i => ( i.id === id ) && ( i.cantidad += value) ) && setIdProd ([...idProd])
-    
+
+    idProd.find(i => ( i.id === id ) && ( i.cantidad += value) ) && setIdProd ([...idProd])  
     : 
-  //en caso que no exista previamente, se agrega al array el id de producto y la cantidad
-  setIdProd([...idProd, ...x])  
+    setIdProd([...idProd, ...x])  
   
   }
   
   useEffect(() => { 
+    
     value > 0 ? setEstado(true) : setEstado(false)
 
   }, [value])
 
   return (
     <>  
-        <p>Stock: {tempStock}</p>
-        <DashCircle onClick={remove} size={28}/>
-       
-        <span className="m-2">   {value}    </span>
-        <PlusCircle onClick={add} size={28} /> 
-        <br></br>
-        <Button disabled={!estado} className="btn btn-warning mt-2 " onClick={() => addCart([{id: id, cantidad: value, name: name, price: price, img: img, stock: stock}])}>
+      <p>Stock: {tempStock}</p>
+      <DashCircle onClick={remove} size={28}/>
+      <span className="m-2">   {value}    </span>
+      <PlusCircle onClick={add} size={28} /> 
+      <br></br>
+      <Button disabled={!estado} className="btn btn-warning mt-2 " onClick={() => addCart([{id: id, cantidad: value, name: name, price: price, img: img, stock: stock}])}>
         Agregar al carrito
-        </Button>
-        
-        <Cartel showToast={showToast} setShowToast={setShowToast} texto={"no hay mas stock"}/>
+      </Button>
+      <Cartel showToast={showToast} setShowToast={setShowToast} texto={"no hay mas stock"}/>
     </>
     );
 };
