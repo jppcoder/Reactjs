@@ -1,7 +1,7 @@
 
 # Ecommerce de Consolas Arcade
 
-## Realizado en React JS, con los conocimientos adquiridos en el curso de CoderHouse, apoyandome en otras herramientas y cursos online, logue hacer esta webApp Responsive, con manejo de usuarios, ordenes de pedidos, y stock de mercaderia alojado en Firebase
+## Realizado en React JS, con los conocimientos adquiridos en el curso de CoderHouse, apoyandome en otras herramientas y cursos online, logre hacer esta webApp Responsive, con manejo de usuarios, ordenes de pedidos, y stock de mercaderia alojado en Firebase
 
 
 Este proyecto fue creado con: [Create React App](https://github.com/facebook/create-react-app).
