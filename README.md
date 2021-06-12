@@ -45,3 +45,6 @@ https://react-bootstrap.netlify.app/
 https://icons.getbootstrap.com/
 https://code.visualstudio.com/
 
+
+### Demo del proyecto:
+https://github.com/jppcoder/Reactjs/blob/main/public/gif/ecommerce.gif
