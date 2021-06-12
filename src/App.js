@@ -10,6 +10,7 @@ import Garantia from './components/container/Garantia';
 import Cart from './components/container/Cart';
 import User from './components/User/User';
 import Comprar from './components/container/Comprar';
+import Footer from './components/container/Footer';
 
 //context
 import { CartProd } from './context/CartContext';
@@ -40,7 +41,7 @@ function App() {
                     <Route path='/Cart' exact component={Cart} />
                     <Route path='/' exact component={ItemListContainer} />   
                   </Switch>
-                
+                <Footer />
             </BrowserRouter>
           </header>
         </div>
