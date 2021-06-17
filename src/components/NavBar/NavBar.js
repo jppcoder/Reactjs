@@ -13,7 +13,7 @@ import CartWidget from './CartWidget';
 export default function NavBar() {
     return (
        
-        <Navbar  collapse OnSelect expand="lg"  bg="dark" variant="dark"  >
+        <Navbar  collapse onSelect expand="lg"  bg="dark" variant="dark"  >
             <LinkContainer to="/" exact>
                 <Navbar.Brand>
                     <Link to="/" exact><img alt="Consola retro logo"      

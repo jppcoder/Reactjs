@@ -30,7 +30,7 @@ const User = () => {
         hacer.setCondicion(false);
        
     }
-     console.log(orderList)
+    
     return (  
         <> 
             <LinkContainer to="/">

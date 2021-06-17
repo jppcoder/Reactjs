@@ -20,7 +20,7 @@ const Signup = () => {
     const registrarUsuario = (e) => {
         e.preventDefault()
         auth.createUserWithEmailAndPassword(email, pass)
-            .then((res) => console.log(res))
+            .then(() => { setError("Usuario creado"); setShowToast(true)})
             .catch(err =>  { setError(err.message); setShowToast(true)} 
             
             )

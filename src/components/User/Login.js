@@ -20,7 +20,7 @@ const User = () => {
     const loguearUsuario = (e) => {
         e.preventDefault()
         app.auth().signInWithEmailAndPassword(mail, passw)
-        .then((res) => console.log(res))
+        .then((res) => { setError("Ingresado correctamente"); setShowToast(true)})
         .catch(err =>  { setError(err.message); setShowToast(true)}   
         )
         hacer.setCondicion(true);

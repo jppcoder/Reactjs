@@ -11,7 +11,6 @@ import { XCircle, ZoomIn } from 'react-bootstrap-icons';
 export default function Orders(comprador) {
 
     const [filtConsolas, fire, loading, setLoading, orderList, setOrderList] = useContext(DataContext)
-    console.log("aca", orderList)
     const [idProd, setIdProd, hacer, total, setTotal, unit, setUnit, showToast, setShowToast, user, setUser, width, height] = useContext(CartContext)
     const [tamaño, setTamaño] = useState("")
     const breakpoint = 620;
