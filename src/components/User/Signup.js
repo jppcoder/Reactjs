@@ -1,11 +1,17 @@
 import React, {  useEffect, useContext, useState} from 'react';
-import { auth } from '../../firebase';
+
+//Context
 import { CartContext }  from '../../context/CartContext' 
-import { Jumbotron, Form, Button, Nav } from 'react-bootstrap'
-import  Cartel  from './../container/Cartel'
+
+//bootstrap
+import { Form, Button  } from 'react-bootstrap'
+
+//Firebase
 import app from '../../firebase';
+import { auth } from '../../firebase';
 
-
+//import de componentes
+import  Cartel  from './../container/Cartel'
 
 const Signup = () => {
     

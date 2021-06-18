@@ -11,6 +11,7 @@ import Cart from './components/container/Cart';
 import User from './components/User/User';
 import Comprar from './components/container/Comprar';
 import Footer from './components/container/Footer';
+import Contacto from './components/container/Contacto';
 
 //context
 import { CartProd } from './context/CartContext';
@@ -36,7 +37,8 @@ function App() {
                   <NavBar />         
                   <Switch>
                     <Route path='/Comprar' exact component={Comprar} />
-                    <Route path='/Garantia' exact component={Garantia} /> 
+                    <Route path='/Garantia' exact component={Garantia} />
+                    <Route path='/Contacto' exact component={Contacto} /> 
                     <Route path='/User' exact component={User} />
                     <Route path='/Cart' exact component={Cart} />
                     <Route path='/' exact component={ItemListContainer} />   

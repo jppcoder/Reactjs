@@ -2,11 +2,9 @@
 import React from 'react'
 
 //react Bootstrap
-import { Navbar, Nav, NavItem, } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import {LinkContainer} from 'react-router-bootstrap'
-import { Person } from 'react-bootstrap-icons';
-import NavBar from '../NavBar/NavBar';
+import { Navbar } from 'react-bootstrap';
+
+
 
 
 

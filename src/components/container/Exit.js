@@ -1,7 +1,7 @@
 import React, {useContext} from 'react'
 import { CartContext }  from '../../context/CartContext'
 //import
-import { Row, Col, Toast, Modal, Button  } from 'react-bootstrap';
+import { Modal, Button  } from 'react-bootstrap';
 
 
 const Exit = ({showToast, setShowToast, texto}) => {

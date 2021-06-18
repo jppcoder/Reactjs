@@ -13,6 +13,7 @@ import { Contador } from './Contador';
 const Item = ({name,price,img,id,stock, key}) => {
     
   const [addCart] = useContext(CartContext)
+  
 
     return ( 
       <> 
@@ -26,7 +27,8 @@ const Item = ({name,price,img,id,stock, key}) => {
             <Card.Footer>
               <Link to={`/items/${id}`}>Mas Informacion</Link>
             </Card.Footer>
-          </Card>  
+          </Card>
+           
         </> 
     );
 }

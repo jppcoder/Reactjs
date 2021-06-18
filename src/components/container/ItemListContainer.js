@@ -13,7 +13,7 @@ import ItemList from './ItemList';
 function ItemListContainer() {
 
 	
-	const [filtConsolas, fire, loading, setLoading] = useContext(DataContext);
+	const [filtConsolas, fire, loading] = useContext(DataContext);
 
     return ( 
       <>

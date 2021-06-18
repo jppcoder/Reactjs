@@ -1,4 +1,4 @@
-import React, {useContext, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 
 //context
 import { CartContext }  from '../../context/CartContext'
@@ -8,8 +8,10 @@ import {LinkContainer} from 'react-router-bootstrap'
 import { Jumbotron, Button, Table } from 'react-bootstrap'
 import { PlusCircle, DashCircle, XCircle, ArrowLeftCircleFill} from 'react-bootstrap-icons';
 
+//firebase
+import firebase from 'firebase/app';
+
 //import de componentes
-import Orders from './Orders'
 import Exit from './Exit'
 
 
@@ -17,8 +19,14 @@ import Exit from './Exit'
 
 export default function Cart() {
 
-    const [idProd, setIdProd, hacer, total, setTotal, unit, setUnit, showToast, setShowToast] = useContext(CartContext)
+    const [idProd, setIdProd, hacer, total, setTotal, unit, setUnit, showToast, setShowToast, user, setUser, width, height] = useContext(CartContext)
     
+    useEffect(() => {
+      firebase.auth().onAuthStateChanged(function(user) {
+        setUser(user? user.email : null)
+       }
+      ); 
+    }, [])
     
    return (
       <> 
@@ -79,7 +87,6 @@ export default function Cart() {
                 <button className="btn btn-success" onClick={hacer.handleCompra}> Terminar compra </button>}
               </div>
               <Exit showToast={showToast} setShowToast={setShowToast} texto={"Realizo su compra correctamente"} />
-              <Orders />
           </> 
         }
       </> 

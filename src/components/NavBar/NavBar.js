@@ -33,18 +33,10 @@ export default function NavBar() {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" /> 
                     <Navbar.Collapse id="responsive-navbar-nav "  className="justify-content-end">
                         <Nav className="detalle productos nav navbar-nav navbar-center "> 
-                            
+                            <LinkContainer to="/"><Nav.Link >Productos</Nav.Link></LinkContainer>
                             <LinkContainer to="/Comprar"><Nav.Link >Comprar</Nav.Link></LinkContainer>
                             <LinkContainer to="/Garantia"><Nav.Link >Garantia</Nav.Link></LinkContainer>
-                            
-                            <NavDropdown title="Productos" id="collasible-nav-dropdown">
-                                <NavDropdown.Item href="#action/3.1">Consolas</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">Bartop</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">Arcade</NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4">Productos a Medida</NavDropdown.Item>
-                            </NavDropdown>
-                            
+                            <LinkContainer to="/Contacto"><Nav.Link >Contacto</Nav.Link></LinkContainer>
                         </Nav>
                     </Navbar.Collapse>
                    
