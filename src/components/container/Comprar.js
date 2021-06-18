@@ -10,7 +10,7 @@ export default function Comprar() {
         <LinkContainer to="/">
             <ArrowLeftCircleFill className="d-flex mt-3 ml-3" size={30}/>
         </LinkContainer>    
-        <div className="container mt-5 text-left">
+        <div className="container mt-5 text-left"  style={{ minHeight:'60vh'}}>
             <h3>Comprar máquinas Arcade multijuegos nunca fue tan fácil</h3>
             <div className="mt-3" >
 

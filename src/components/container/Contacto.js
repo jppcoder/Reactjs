@@ -11,7 +11,7 @@ export default function Contacto() {
         <LinkContainer to="/">
             <ArrowLeftCircleFill className="d-flex mt-3 ml-3" size={30}/>
         </LinkContainer> 
-        <div className="container mt-5 text-left">
+        <div className="container mt-5 text-left"  style={{ minHeight:'60vh'}}>
             <h3 >Contactate con Nosotros</h3>
             
                 <ul className="mt-3">

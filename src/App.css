@@ -79,7 +79,14 @@ a {
 }
 .footerText { color:#f8f9fa }
 
-
+.footer {position:sticky;
+  left:0px;
+  bottom:0px;
+  height:50px;
+  width:100%;
+  background:#282c34;
+  color:#f8f9fa
+}
 
 td, th { font-size: 1.3em;}
 

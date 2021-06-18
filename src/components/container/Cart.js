@@ -33,7 +33,7 @@ export default function Cart() {
         
         { unit === 0 ?  
         
-          <Jumbotron  className="container mt-5 jumboCart" style={{ height:'60vh' }}>
+          <Jumbotron  className="container mt-5 jumboCart" style={{ height:'70vh' }}>
             <h1>Carrito vacio</h1>
               
             
