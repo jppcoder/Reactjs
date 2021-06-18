@@ -9,6 +9,8 @@ import { PlusCircle, DashCircle } from 'react-bootstrap-icons';
 
 //imports de componentes
 import  Cartel  from './Cartel';
+import  CartelAdd  from './CartelAdd';
+
 
 
 export const Contador = ({stock, id, name, price, img}) => {
@@ -18,6 +20,7 @@ export const Contador = ({stock, id, name, price, img}) => {
   const [tempStock, setTempStock] = useState(stock)
   const [estado, setEstado] = useState(false)
   const [showToast, setShowToast] = useState(false)
+  const [addToast, setAddToast] = useState(false)
 
   const add = () => {
     if (tempStock > 0) {
@@ -36,10 +39,10 @@ export const Contador = ({stock, id, name, price, img}) => {
   };
 
   const addCart = (x, cantidad) => {
-  
-  idProd.some(i => i.id === id ) ? 
+    setAddToast(true);
+    idProd.some(i => i.id === id ) ? 
 
-    idProd.find(i => ( i.id === id ) && ( i.cantidad += value) ) && setIdProd ([...idProd])  
+    idProd.find(i => ( i.id === id ) && ( i.cantidad += value) ) && setIdProd ([...idProd])
     : 
     setIdProd([...idProd, ...x])  
   
@@ -62,6 +65,7 @@ export const Contador = ({stock, id, name, price, img}) => {
         Agregar al carrito
       </Button>
       <Cartel showToast={showToast} setShowToast={setShowToast} texto={"no hay mas stock"}/>
+      <CartelAdd addToast={addToast} setAddToast={setAddToast} texto={"Agregado al carrito"} img={img}/> 
     </>
     );
 };
