@@ -5,6 +5,7 @@ html, body {
   width: auto !important;
   overflow-x: hidden !important;
   -ms-overflow-style: none;
+  
   /* IE */
   scrollbar-width: none;
   /* Firefox */ }
@@ -17,6 +18,9 @@ html, body {
   text-align: center;
   margin: 0px;
   padding: 0px;
+  
+ 
+  
 }
 .logo {
   width: 70px;
@@ -71,15 +75,14 @@ a {
 
 .noshow {display: none !important}
 
-.spinner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 60vh;
+.spinner { 
+  position: absolute;
+  margin-left: 50%;
+  margin-top: 20%;
 }
-.footerText { color:#f8f9fa }
 
-.footer {position:sticky;
+
+.footer {position: sticky;
   left:0px;
   bottom:0px;
   height:50px;

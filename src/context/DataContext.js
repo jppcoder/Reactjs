@@ -25,17 +25,7 @@ export const DataProd = ({children}) => {
     fire.setMail  = setMail
     fire.orderList = orderList
     fire.setOrderList = setOrderList
-    fire.mil = () =>  setDonde(["price", ">", 1000])
-    fire.cinco = () =>  setDonde(["price", ">", 20000])
-    fire.diez = () =>  setDonde(["price", ">", 40000])
-
-    fire.todos = () =>  setDonde(["price", ">", 1]) 
-    fire.ttodos = () => setTipo("todo")
-    fire.arcade = () => setTipo("arcade")
-    fire.consola = () =>  setTipo("consola")
-    fire.pedestal = () =>  setTipo("pedestal")
-
-   
+    
     
     useEffect( () => {
       setLoading(true)
@@ -96,24 +86,24 @@ export const DataProd = ({children}) => {
       }  
 
     useEffect ( () => {
-     
-      if (tipo == "consola" ) 
-        { let list = consolas.filter(form => form.category == tipo);
-        setFiltConsolas(list)} 
-      else if ( tipo == "arcade") {
-        { let list = consolas.filter(form => form.category == tipo);
-          setFiltConsolas(list)} 
-      }
-      else if ( tipo == "pedestal") {
-        { let list = consolas.filter(form => form.category == tipo);
-          setFiltConsolas(list)} 
-      } 
-      else if ( tipo == "todo") {
-          setFiltConsolas(consolas)
-      }
-    }, [consolas, tipo])
+  
+      setFiltConsolas(consolas)
+
+    }, [consolas])
     
- 
+      
+    fire.search = (variable) => { 
+      
+      if (variable === "todo") { setFiltConsolas(consolas) }
+      else{  
+      let list = consolas.filter(form => form.category == variable)
+      setFiltConsolas(list)        
+      }
+    }
+    
+    fire.firstFilt = (variable) => setDonde(["price", ">", variable])
+    console.log(donde)
+
     
   return (
     <DataContext.Provider value={[filtConsolas, fire, loading, setLoading, orderList, setOrderList, mail, setMail, eliminaRegistro, setEliminaRegistro, donde, setDonde]}>
